@@ -12,9 +12,12 @@
 		B721F77E2150563D00306F1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B721F77C2150563D00306F1F /* Main.storyboard */; };
 		B721F7802150563E00306F1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B721F77F2150563E00306F1F /* Assets.xcassets */; };
 		B721F7832150563E00306F1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B721F7812150563E00306F1F /* LaunchScreen.storyboard */; };
+		F782526FBF18748DB432895F /* Pods_GymBros.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFC18F267F15958EB7C96E7 /* Pods_GymBros.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2973459559D828185216E062 /* Pods-GymBros.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymBros.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GymBros/Pods-GymBros.debug.xcconfig"; sourceTree = "<group>"; };
+		9B05BF6400C4A1A704DA551F /* Pods-GymBros.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymBros.release.xcconfig"; path = "Pods/Target Support Files/Pods-GymBros/Pods-GymBros.release.xcconfig"; sourceTree = "<group>"; };
 		B721F7752150563D00306F1F /* GymBros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymBros.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B721F7782150563D00306F1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B721F77A2150563D00306F1F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,14 @@
 		B721F77F2150563E00306F1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B721F7822150563E00306F1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B721F7842150563E00306F1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7FFCFCB217A578100577BB6 /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7FFCFCD217A578100577BB6 /* FacebookCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7FFCFCF217A578100577BB6 /* FacebookLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7FFCFD1217A578100577BB6 /* FacebookShare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookShare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7FFCFD3217A578100577BB6 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7FFCFD5217A578100577BB6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7FFCFD7217A578100577BB6 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAFC18F267F15958EB7C96E7 /* Pods_GymBros.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GymBros.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +40,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F782526FBF18748DB432895F /* Pods_GymBros.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42A3421D942C7F0A529519DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7FFCFCB217A578100577BB6 /* Bolts.framework */,
+				B7FFCFCD217A578100577BB6 /* FacebookCore.framework */,
+				B7FFCFCF217A578100577BB6 /* FacebookLogin.framework */,
+				B7FFCFD1217A578100577BB6 /* FacebookShare.framework */,
+				B7FFCFD3217A578100577BB6 /* FBSDKCoreKit.framework */,
+				B7FFCFD5217A578100577BB6 /* FBSDKLoginKit.framework */,
+				B7FFCFD7217A578100577BB6 /* FBSDKShareKit.framework */,
+				EAFC18F267F15958EB7C96E7 /* Pods_GymBros.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B721F76C2150563D00306F1F = {
 			isa = PBXGroup;
 			children = (
 				B721F7772150563D00306F1F /* GymBros */,
 				B721F7762150563D00306F1F /* Products */,
+				D2986678D8502607A510DFEF /* Pods */,
+				42A3421D942C7F0A529519DA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +93,15 @@
 			path = GymBros;
 			sourceTree = "<group>";
 		};
+		D2986678D8502607A510DFEF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2973459559D828185216E062 /* Pods-GymBros.debug.xcconfig */,
+				9B05BF6400C4A1A704DA551F /* Pods-GymBros.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +109,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B721F7872150563E00306F1F /* Build configuration list for PBXNativeTarget "GymBros" */;
 			buildPhases = (
+				472E898B8AE46CA9B7A7E9D7 /* [CP] Check Pods Manifest.lock */,
 				B721F7712150563D00306F1F /* Sources */,
 				B721F7722150563D00306F1F /* Frameworks */,
 				B721F7732150563D00306F1F /* Resources */,
+				8D7311CB40880C90DA8121B4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,6 +170,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		472E898B8AE46CA9B7A7E9D7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GymBros-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D7311CB40880C90DA8121B4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GymBros/Pods-GymBros-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GymBros/Pods-GymBros-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B721F7712150563D00306F1F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -164,6 +255,7 @@
 /* Begin XCBuildConfiguration section */
 		B721F7852150563E00306F1F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B05BF6400C4A1A704DA551F /* Pods-GymBros.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -224,6 +316,7 @@
 		};
 		B721F7862150563E00306F1F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B05BF6400C4A1A704DA551F /* Pods-GymBros.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -278,6 +371,7 @@
 		};
 		B721F7882150563E00306F1F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2973459559D828185216E062 /* Pods-GymBros.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -295,6 +389,7 @@
 		};
 		B721F7892150563E00306F1F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B05BF6400C4A1A704DA551F /* Pods-GymBros.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
