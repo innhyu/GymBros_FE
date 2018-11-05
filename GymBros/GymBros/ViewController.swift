@@ -8,9 +8,12 @@
 
 import UIKit
 import FacebookLogin
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController {
-
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
@@ -26,5 +29,53 @@ class ViewController: UIViewController {
   }
 
 
+}
+
+class WorkoutsController: UITableViewController {
+  var workouts = [String]()
+  
+  
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    // Do any additional setup after loading the view, typically from a nib.
+    //get workouts from api
+    self.workouts = ["workout1", "workout2"]
+    Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts").responseJSON { response in
+      print("Request: \(String(describing: response.request))")   // original url request
+      print("Response: \(String(describing: response.response))") // http url response
+      print("Result: \(response.result)")                         // response serialization result
+      
+      if let json = response.result.value {
+        
+        print("JSON: \(json)") // serialized json response
+        let swiftyjson = JSON(json)
+        print(swiftyjson[0])
+        if swiftyjson.count > 0 {
+          self.workouts = []
+          for workout in swiftyjson.arrayValue {
+            self.workouts.append(workout["title"].string!)
+          }
+          self.tableView.reloadData()
+        }
+        
+      }
+    }
+  }
+  
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return workouts.count
+  }
+  
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "workoutCell", for: indexPath)
+    cell.textLabel?.text = workouts[indexPath.row]
+    return cell
+  }
+  
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
+  }
 }
 

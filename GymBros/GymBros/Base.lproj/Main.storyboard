@@ -86,7 +86,6 @@
         <!--Profile-->
         <scene sceneID="nnk-Sh-4lG">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gvp-Su-BAV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="amI-RJ-4oo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" id="dly-j1-6SQ"/>
                     <toolbarItems/>
@@ -99,22 +98,36 @@
                         <segue destination="Ea2-EP-gmi" kind="relationship" relationship="rootViewController" id="IaW-me-ykL"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gvp-Su-BAV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2062" y="1030"/>
         </scene>
-        <!--10/31 (Wed)-->
+        <!--Workouts Index-->
         <scene sceneID="1GF-yu-Zqy">
             <objects>
-                <viewController id="7AH-Zm-RTT" sceneMemberID="viewController">
+                <viewController title="Workouts Index" id="7AH-Zm-RTT" customClass="WorkoutsController" customModule="GymBros" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cNU-jd-QH5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="workoutCell" id="rFg-th-N7E">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rFg-th-N7E" id="223-UH-SYc">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="10/31 (Wed)" id="Ys1-83-Oy7">
                         <barButtonItem key="leftBarButtonItem" title="SORT" id="3Ji-Q9-MCv"/>
                         <barButtonItem key="rightBarButtonItem" title="FILTER" id="2uZ-4y-5xP"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="cNU-jd-QH5" id="mf6-8h-n4E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRw-yQ-S2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
