@@ -12,6 +12,7 @@
 		B721F77E2150563D00306F1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B721F77C2150563D00306F1F /* Main.storyboard */; };
 		B721F7802150563E00306F1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B721F77F2150563E00306F1F /* Assets.xcassets */; };
 		B721F7832150563E00306F1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B721F7812150563E00306F1F /* LaunchScreen.storyboard */; };
+		B73003A621951E3F0086A5F4 /* WorkoutsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73003A521951E3F0086A5F4 /* WorkoutsTableViewController.swift */; };
 		F782526FBF18748DB432895F /* Pods_GymBros.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFC18F267F15958EB7C96E7 /* Pods_GymBros.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		B721F77F2150563E00306F1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B721F7822150563E00306F1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B721F7842150563E00306F1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B73003A521951E3F0086A5F4 /* WorkoutsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsTableViewController.swift; sourceTree = "<group>"; };
 		B7FFCFCB217A578100577BB6 /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7FFCFCD217A578100577BB6 /* FacebookCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7FFCFCF217A578100577BB6 /* FacebookLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +87,7 @@
 			children = (
 				B721F7782150563D00306F1F /* AppDelegate.swift */,
 				B721F77A2150563D00306F1F /* ViewController.swift */,
+				B73003A521951E3F0086A5F4 /* WorkoutsTableViewController.swift */,
 				B721F77C2150563D00306F1F /* Main.storyboard */,
 				B721F77F2150563E00306F1F /* Assets.xcassets */,
 				B721F7812150563E00306F1F /* LaunchScreen.storyboard */,
@@ -231,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B721F77B2150563D00306F1F /* ViewController.swift in Sources */,
+				B73003A621951E3F0086A5F4 /* WorkoutsTableViewController.swift in Sources */,
 				B721F7792150563D00306F1F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
