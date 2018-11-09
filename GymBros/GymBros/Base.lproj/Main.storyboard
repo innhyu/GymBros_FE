@@ -114,6 +114,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="378" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="YRs-tK-Ncb" kind="showDetail" id="LJ7-bQ-uAI"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -347,6 +350,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="D3y-dg-sRY"/>
+        <segue reference="LJ7-bQ-uAI"/>
+        <segue reference="1Vq-1R-1x0"/>
     </inferredMetricsTieBreakers>
 </document>
