@@ -91,13 +91,13 @@
 			children = (
 				B721F7782150563D00306F1F /* AppDelegate.swift */,
 				B721F77A2150563D00306F1F /* ViewController.swift */,
+				2AEB898D2195553100D57AEC /* ShowViewController.swift */,
 				B73003A521951E3F0086A5F4 /* WorkoutsTableViewController.swift */,
 				B73003A7219542B20086A5F4 /* WorkoutCreateViewController.swift */,
 				B721F77C2150563D00306F1F /* Main.storyboard */,
 				B721F77F2150563E00306F1F /* Assets.xcassets */,
 				B721F7812150563E00306F1F /* LaunchScreen.storyboard */,
 				B721F7842150563E00306F1F /* Info.plist */,
-				2AEB898D2195553100D57AEC /* ShowViewController.swift */,
 			);
 			path = GymBros;
 			sourceTree = "<group>";

@@ -33,11 +33,11 @@ class ShowViewController: UIViewController {
         print("JSON: \(json)") // serialized json response
         let swiftyjson = JSON(json)
         print(swiftyjson[self.index!])
-        self.name.text = swiftyjson[self.index!]["title"].string
-        self.time.text = swiftyjson[self.index!]["title"].string
-        self.location.text = swiftyjson[self.index!]["location"].string
-        self.type.text = "should werk"
-        self.size.text = swiftyjson[self.index!]["team_size"].string
+        self.name.text = swiftyjson["workout"]["title"].string
+        self.time.text = swiftyjson["workout"]["title"].string
+        self.location.text = swiftyjson["workout"]["location"].string
+        //        self.type.text = swiftyjson["workout"]["location"].string // There is no workout type yet;
+        self.size.text = swiftyjson["workout"]["\"team_size\""].string
         
       }
     }

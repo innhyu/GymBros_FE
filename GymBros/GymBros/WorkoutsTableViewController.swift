@@ -53,14 +53,18 @@ class WorkoutsTableViewController: UITableViewController {
     }
   
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      print(indexPath)
       performSegue(withIdentifier: "toShowPage", sender: indexPath)
     }
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if (segue.identifier == "toShowPage") {
-        let secondVC = (segue.destination as? ShowViewController)
-        let index = sender as! IndexPath
-        secondVC?.index = index.row
+      print("Zero")
+      if let secondVC = segue.destination as? ShowViewController {
+        print("First")
+        if let index = sender as? IndexPath{
+          print("Second")
+          secondVC.index = index.row
+        }
       }
     }
   
