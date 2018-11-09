@@ -15,6 +15,8 @@ class WorkoutsTableViewController: UITableViewController {
   
     override func viewDidLoad() {
       super.viewDidLoad()
+      self.tableView.delegate = self
+      self.tableView.dataSource = self
       // Do any additional setup after loading the view, typically from a nib.
       //get workouts from api
       self.workouts = ["workout1", "workout2"]
@@ -48,6 +50,18 @@ class WorkoutsTableViewController: UITableViewController {
       let cell = tableView.dequeueReusableCell(withIdentifier: "workoutCell", for: indexPath)
       cell.textLabel?.text = workouts[indexPath.row]
       return cell
+    }
+  
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      performSegue(withIdentifier: "toShowPage", sender: indexPath)
+    }
+  
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      if (segue.identifier == "toShowPage") {
+        let secondVC = (segue.destination as? ShowViewController)
+        let index = sender as! IndexPath
+        secondVC?.index = index.row
+      }
     }
   
     override func didReceiveMemoryWarning() {
