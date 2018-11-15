@@ -17,13 +17,12 @@ class WorkoutShowViewController: UIViewController {
   @IBOutlet var location: UILabel!
   @IBOutlet var type: UILabel!
   @IBOutlet var size: UILabel!
-  var index: Int?
+  var workout_id: Int?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let row = String(self.index!)
-    Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/"+row).responseJSON { response in
+    Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(workout_id!)").responseJSON { response in
       print("Request: \(String(describing: response.request))")   // original url request
       print("Response: \(String(describing: response.response))") // http url response
       print("Result: \(response.result)")                         // response serialization result
@@ -32,7 +31,6 @@ class WorkoutShowViewController: UIViewController {
         
         print("JSON: \(json)") // serialized json response
         let swiftyjson = JSON(json)
-        print(swiftyjson[self.index!])
         self.name.text = swiftyjson["workout"]["title"].string
         self.time.text = swiftyjson["workout"]["title"].string
         self.location.text = swiftyjson["workout"]["location"].string
@@ -44,11 +42,12 @@ class WorkoutShowViewController: UIViewController {
     
   }
   
-  func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-    if (segue.identifier == "toShowPage") {
-      let index = sender as! IndexPath
-      self.index = index.row
-    }
-  }
+// Preparation is done in the table, not this
+//  func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+//    if (segue.identifier == "toShowPage") {
+//      let index = sender as! IndexPath
+//      self.index = index.row
+//    }
+//  }
   
 }

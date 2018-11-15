@@ -135,12 +135,12 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="Pgh-a1-5bf" kind="showDetail" identifier="toShowPage" id="HUr-by-HnH"/>
+                        <segue destination="YRs-tK-Ncb" kind="showDetail" identifier="toShowPage" id="ISo-p4-gNq"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wqc-Ke-COz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6092.8000000000002" y="145.72713643178412"/>
+            <point key="canvasLocation" x="6138" y="133"/>
         </scene>
         <!--Home-->
         <scene sceneID="XE4-iH-aHT">
@@ -206,6 +206,7 @@
                                 <rect key="frame" x="190" y="357" width="169" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Cs-v6-D3W">
@@ -607,7 +608,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qnJ-HR-bQF"/>
-        <segue reference="bae-hB-Ud9"/>
+        <segue reference="ISo-p4-gNq"/>
+        <segue reference="1Vq-1R-1x0"/>
     </inferredMetricsTieBreakers>
 </document>

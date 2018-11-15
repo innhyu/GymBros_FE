@@ -58,9 +58,12 @@ class WorkoutsTableViewController: UITableViewController {
     }
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if let secondVC = segue.destination as? WorkoutShowViewController {
-        if let index = sender as? IndexPath{
-          secondVC.index = index.row
+      if (segue.identifier == "toShowPage") {
+        if let destNavController = segue.destination as? UINavigationController{
+          if let destVC = destNavController.topViewController as? WorkoutShowViewController{
+            let index = sender as! IndexPath
+            destVC.workout_id = index.row + 1
+          }
         }
       }
     }

@@ -116,7 +116,6 @@ class WorkoutCreateViewController: UIViewController, UIPickerViewDelegate, UIPic
   }
   
   @IBAction func createWorkout(_ sender: Any?){
-    /*
     // Fetching fields from the inputs
     let title: String? = self.workoutTitle.text;
     let time: String? = self.workoutTime.text;
@@ -151,7 +150,7 @@ class WorkoutCreateViewController: UIViewController, UIPickerViewDelegate, UIPic
         print("JSON: \(json)") // serialized json response
         let swiftyjson = JSON(json);
         print(swiftyjson)
-        let workout_id = swiftyjson["id"]
+        let workout_id = swiftyjson["id"].int
         self.performSegue(withIdentifier: "workoutCreated", sender: workout_id)
       }
       else {
@@ -160,22 +159,18 @@ class WorkoutCreateViewController: UIViewController, UIPickerViewDelegate, UIPic
         fail.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         self.present(fail, animated: true, completion: nil)
       }
-    }*/
-    
-    self.performSegue(withIdentifier: "workoutCreated", sender: 3)
+    }
   }
   
   // MARK: - Navigation
 
   // In a storyboard-based application, you will often want to do a little preparation before navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    print("First")
-    print(segue.destination)
-    if let destinationVC = segue.destination as? WorkoutShowViewController {
-      print("Second")
-      if let index = sender as? Int {
-        print("Third")
-        destinationVC.index = index
+    if segue.identifier == "workoutCreated"{
+      if let destNavController = segue.destination as? UINavigationController{
+        if let destVC = destNavController.topViewController as? WorkoutShowViewController{
+          destVC.workout_id = (sender as! Int)
+        }
       }
     }
   }
