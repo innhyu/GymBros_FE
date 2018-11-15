@@ -10,8 +10,9 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class WorkoutCreateViewController: UIViewController {
-
+class WorkoutCreateViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+  let locations = ["Wiegand Gymnasium", "Jared L. Cohon Center Gymnasium", "Skibo Gymnasium"]
+  
   @IBOutlet weak var workoutTitle: UITextField!
   @IBOutlet weak var workoutTime: UITextField!
   @IBOutlet weak var workoutDuration: UITextField!
@@ -20,14 +21,35 @@ class WorkoutCreateViewController: UIViewController {
   @IBOutlet weak var teamSize: UITextField!
   
   override func viewDidLoad() {
-      super.viewDidLoad()
+    super.viewDidLoad()
 
-      // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
+    let locationPicker = UIPickerView()
+    workoutLocation.inputView = locationPicker
+    locationPicker.delegate = self
+    workoutLocation.text = locations[0]
   }
 
   override func didReceiveMemoryWarning() {
-      super.didReceiveMemoryWarning()
-      // Dispose of any resources that can be recreated.
+    super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
+  }
+  
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return self.locations.count
+  }
+  
+  func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    return self.locations[row]
+  }
+  
+  func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    workoutLocation.text = self.locations[row]
+    self.view.endEditing(true)
   }
   
   @IBAction func createWorkout(_ sender: Any){
@@ -36,7 +58,8 @@ class WorkoutCreateViewController: UIViewController {
     let time = self.workoutTime.text;
     let duration: Int? = Int(self.workoutDuration.text!);
     let location = self.workoutLocation.text;
-    let type = self.workoutType.text;
+    // Type isn't used yet
+    // let type = self.workoutType.text;
     let teamSize: Int? = Int(self.teamSize.text!);
 
     // Constructing parameter needed for Alamofire Request
@@ -47,7 +70,7 @@ class WorkoutCreateViewController: UIViewController {
       "time": time ?? "", // "Format is in -> 2007-12-04 00:00:00 -0000"
       "duration": duration ?? "",
       // Do something with location to make a dropdown
-      "location": "WIEGAND GYMNASIUM",
+      "location": location ?? "",
       "team_size": teamSize ?? ""
     ]
 
