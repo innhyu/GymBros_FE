@@ -7,21 +7,50 @@
 //
 
 import UIKit
-//import FacebookLogin
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController {
-  
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
-    self.navigationController?.isNavigationBarHidden = true
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
+
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        self.navigationController?.isNavigationBarHidden = true
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func login(_ sender: Any?){
+        let parameters: Parameters = [
+            "email": emailField.text ?? "",
+            "password": passwordField.text ?? ""
+        ]
+        
+        Alamofire.request("https://cryptic-temple-10365.herokuapp.com/login", method: .post, parameters: parameters)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                
+            print("Request: \(String(describing: response.request))")   // original url request
+            print("Response: \(String(describing: response.response))") // http url response
+            print("Result: \(response.result)")                         // response serialization result
+            
+            if let json = response.result.value {
+                
+                print("JSON: \(json)") // serialized json response
+                let swiftyjson = JSON(json);
+                let user_id = swiftyjson["id"].int
+                
+                
+                self.performSegue(withIdentifier: "workoutCreated", sender: sender)
+            }
+        }
+    }
 
 }
 
