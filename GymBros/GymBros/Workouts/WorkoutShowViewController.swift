@@ -22,6 +22,8 @@ class WorkoutShowViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    let formatter = DateFormatter()
+    
     Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(workout_id!)").responseJSON { response in
       print("Request: \(String(describing: response.request))")   // original url request
       print("Response: \(String(describing: response.response))") // http url response
@@ -32,10 +34,16 @@ class WorkoutShowViewController: UIViewController {
         print("JSON: \(json)") // serialized json response
         let swiftyjson = JSON(json)
         self.name.text = swiftyjson["workout"]["title"].string
-        self.time.text = swiftyjson["workout"]["title"].string
+        // Turning API date string into Date object
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
+        let date = formatter.date(from: swiftyjson["workout"]["time"].string!)
+        // Formatting date appropriately
+        formatter.dateFormat = "MMM dd, HH:mm"
+        self.time.text = formatter.string(from: date!)
+        
         self.location.text = swiftyjson["workout"]["location"].string
         //        self.type.text = swiftyjson["workout"]["location"].string // There is no workout type yet;
-        self.size.text = swiftyjson["workout"]["\"team_size\""].string
+        self.size.text = String(swiftyjson["workout"]["team_size"].int!)
         
       }
     }
