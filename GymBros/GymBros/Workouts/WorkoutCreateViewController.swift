@@ -11,23 +11,27 @@ import Alamofire
 import SwiftyJSON
 
 class WorkoutCreateViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-  let locations = ["Wiegand Gymnasium", "Jared L. Cohon Center Gymnasium", "Skibo Gymnasium"]
-  let locationPicker = UIPickerView()
-  let durations = [30,45,60,75,90,120,150,180]
-  let durationPicker = UIPickerView()
-  let datePicker = UIDatePicker()
+    let locations = ["Wiegand Gymnasium", "Jared L. Cohon Center Gymnasium", "Skibo Gymnasium"]
+    let locationPicker = UIPickerView()
+    let durations = [30,45,60,75,90,120,150,180]
+    let durationPicker = UIPickerView()
+    let datePicker = UIDatePicker()
+    let request = Request()
   
-  @IBOutlet weak var workoutTitle: UITextField!
-  @IBOutlet weak var workoutTime: UITextField!
-  @IBOutlet weak var workoutDuration: UITextField!
-  @IBOutlet weak var workoutLocation: UITextField!
-  @IBOutlet weak var workoutType: UITextField!
-  @IBOutlet weak var teamSize: UITextField!
-  
+    @IBOutlet weak var workoutTitle: UITextField!
+    @IBOutlet weak var workoutTime: UITextField!
+    @IBOutlet weak var workoutDuration: UITextField!
+    @IBOutlet weak var workoutLocation: UITextField!
+    @IBOutlet weak var workoutType: UITextField!
+    @IBOutlet weak var teamSize: UITextField!
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
     // Do any additional setup after loading the view.
+    
+    // Loading User
+    request.loadUser()
     
     // Buttons for toolbar UI
     let doneDateButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDatePicker));
@@ -128,7 +132,7 @@ class WorkoutCreateViewController: UIViewController, UIPickerViewDelegate, UIPic
     // Constructing parameter needed for Alamofire Request
     let parameters: Parameters = [
       // TODO: Do something with user_id
-      "user_id": 1,
+      "user_id": self.request.user_id!,
       "title": title ?? "",
       "time": time ?? "", // "Format is in -> 2007-12-04 00:00:00 -0000"
       "duration": duration ?? "",

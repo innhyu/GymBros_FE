@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class WorkoutShowViewController: UIViewController {
   
+    @IBOutlet var ownerName: UILabel!
     @IBOutlet var name: UILabel!
     @IBOutlet var time: UILabel!
     @IBOutlet var location: UILabel!
@@ -53,6 +54,8 @@ class WorkoutShowViewController: UIViewController {
                 
                 // Owner parsing section
                 self.owner_id = swiftyjson["owner"]["id"].int!
+                let fullOwnerName = "\(swiftyjson["owner"]["first_name"].string!) \(swiftyjson["owner"]["last_name"].string!)"
+                self.ownerName.text = fullOwnerName
             }
         }
         
