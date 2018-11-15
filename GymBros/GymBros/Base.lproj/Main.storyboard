@@ -300,10 +300,10 @@
             </objects>
             <point key="canvasLocation" x="2918" y="1406"/>
         </scene>
-        <!--Show View Controller-->
+        <!--Workout Show View Controller-->
         <scene sceneID="NRY-qp-8wt">
             <objects>
-                <viewController id="Pgh-a1-5bf" customClass="ShowViewController" customModule="GymBros" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Pgh-a1-5bf" customClass="WorkoutShowViewController" customModule="GymBros" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5a0-lZ-Aao">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -609,6 +609,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="qnJ-HR-bQF"/>
-        <segue reference="bae-hB-Ud9"/>
+        <segue reference="1Vq-1R-1x0"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ShowViewController: UIViewController {
+class WorkoutShowViewController: UIViewController {
   
   @IBOutlet var name: UILabel!
   @IBOutlet var time: UILabel!

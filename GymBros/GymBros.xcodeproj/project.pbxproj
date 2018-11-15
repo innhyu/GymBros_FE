@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2AEB898E2195553100D57AEC /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEB898D2195553100D57AEC /* ShowViewController.swift */; };
+		2AEB898E2195553100D57AEC /* WokroutShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEB898D2195553100D57AEC /* WokroutShowViewController.swift */; };
 		B721F7792150563D00306F1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721F7782150563D00306F1F /* AppDelegate.swift */; };
 		B721F77B2150563D00306F1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721F77A2150563D00306F1F /* ViewController.swift */; };
 		B721F77E2150563D00306F1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B721F77C2150563D00306F1F /* Main.storyboard */; };
@@ -21,7 +21,7 @@
 
 /* Begin PBXFileReference section */
 		2973459559D828185216E062 /* Pods-GymBros.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymBros.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GymBros/Pods-GymBros.debug.xcconfig"; sourceTree = "<group>"; };
-		2AEB898D2195553100D57AEC /* ShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
+		2AEB898D2195553100D57AEC /* WokroutShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WokroutShowViewController.swift; sourceTree = "<group>"; };
 		9B05BF6400C4A1A704DA551F /* Pods-GymBros.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymBros.release.xcconfig"; path = "Pods/Target Support Files/Pods-GymBros/Pods-GymBros.release.xcconfig"; sourceTree = "<group>"; };
 		B721F7752150563D00306F1F /* GymBros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymBros.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B721F7782150563D00306F1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,18 +91,34 @@
 		B721F7772150563D00306F1F /* GymBros */ = {
 			isa = PBXGroup;
 			children = (
+				B7F0D4F8219D446600AAB205 /* Authentication */,
+				B7F0D4F7219D445E00AAB205 /* Workouts */,
 				B721F7782150563D00306F1F /* AppDelegate.swift */,
-				B721F77A2150563D00306F1F /* ViewController.swift */,
-				2AEB898D2195553100D57AEC /* ShowViewController.swift */,
-				B73003A521951E3F0086A5F4 /* WorkoutsTableViewController.swift */,
-				B73003A7219542B20086A5F4 /* WorkoutCreateViewController.swift */,
-				B76B5A272196234B00A0316C /* RegisterViewController.swift */,
 				B721F77C2150563D00306F1F /* Main.storyboard */,
 				B721F77F2150563E00306F1F /* Assets.xcassets */,
 				B721F7812150563E00306F1F /* LaunchScreen.storyboard */,
 				B721F7842150563E00306F1F /* Info.plist */,
 			);
 			path = GymBros;
+			sourceTree = "<group>";
+		};
+		B7F0D4F7219D445E00AAB205 /* Workouts */ = {
+			isa = PBXGroup;
+			children = (
+				B73003A7219542B20086A5F4 /* WorkoutCreateViewController.swift */,
+				B73003A521951E3F0086A5F4 /* WorkoutsTableViewController.swift */,
+				2AEB898D2195553100D57AEC /* WokroutShowViewController.swift */,
+			);
+			path = Workouts;
+			sourceTree = "<group>";
+		};
+		B7F0D4F8219D446600AAB205 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				B721F77A2150563D00306F1F /* ViewController.swift */,
+				B76B5A272196234B00A0316C /* RegisterViewController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		D2986678D8502607A510DFEF /* Pods */ = {
@@ -228,7 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AEB898E2195553100D57AEC /* ShowViewController.swift in Sources */,
+				2AEB898E2195553100D57AEC /* WokroutShowViewController.swift in Sources */,
 				B721F77B2150563D00306F1F /* ViewController.swift in Sources */,
 				B73003A621951E3F0086A5F4 /* WorkoutsTableViewController.swift in Sources */,
 				B76B5A282196234B00A0316C /* RegisterViewController.swift in Sources */,
