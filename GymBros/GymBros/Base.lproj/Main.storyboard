@@ -516,6 +516,7 @@
                         <outlet property="size" destination="cvc-eP-3kP" id="Lmc-xt-puS"/>
                         <outlet property="time" destination="lqJ-8P-PwQ" id="WCM-nx-X6i"/>
                         <outlet property="type" destination="8hA-jQ-NYX" id="vXS-Ws-lme"/>
+                        <outlet property="workoutAction" destination="gfA-mM-JdM" id="OhG-dj-NCB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7sZ-Si-4An" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -800,6 +801,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ACZ-BS-af8"/>
-        <segue reference="D3y-dg-sRY"/>
+        <segue reference="1Vq-1R-1x0"/>
     </inferredMetricsTieBreakers>
 </document>
