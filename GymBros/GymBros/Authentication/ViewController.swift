@@ -50,6 +50,12 @@ class ViewController: UIViewController {
                 
                 self.performSegue(withIdentifier: "loginSuccess", sender: sender)
             }
+            else {
+                // Alert to show that the login failed.
+                let fail = UIAlertController(title: "Alert", message: "Login failed. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+                fail.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(fail, animated: true, completion: nil)
+            }
         }
     }
 
