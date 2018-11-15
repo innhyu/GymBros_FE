@@ -18,6 +18,7 @@
 		B76B5A282196234B00A0316C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76B5A272196234B00A0316C /* RegisterViewController.swift */; };
 		B7ED5A7C219DFB66007FEAFD /* WorkoutEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ED5A7B219DFB66007FEAFD /* WorkoutEditViewController.swift */; };
 		B7ED5A7F219E00ED007FEAFD /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ED5A7E219E00ED007FEAFD /* Request.swift */; };
+		B7ED5A82219E0700007FEAFD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ED5A81219E0700007FEAFD /* ProfileViewController.swift */; };
 		F782526FBF18748DB432895F /* Pods_GymBros.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFC18F267F15958EB7C96E7 /* Pods_GymBros.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		B76B5A272196234B00A0316C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B7ED5A7B219DFB66007FEAFD /* WorkoutEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutEditViewController.swift; sourceTree = "<group>"; };
 		B7ED5A7E219E00ED007FEAFD /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		B7ED5A81219E0700007FEAFD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B7FFCFCB217A578100577BB6 /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7FFCFCD217A578100577BB6 /* FacebookCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7FFCFCF217A578100577BB6 /* FacebookLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +97,7 @@
 		B721F7772150563D00306F1F /* GymBros */ = {
 			isa = PBXGroup;
 			children = (
+				B7ED5A80219E06F3007FEAFD /* User */,
 				B7ED5A7D219E00D1007FEAFD /* Request */,
 				B7F0D4F8219D446600AAB205 /* Authentication */,
 				B7F0D4F7219D445E00AAB205 /* Workouts */,
@@ -113,6 +116,14 @@
 				B7ED5A7E219E00ED007FEAFD /* Request.swift */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		B7ED5A80219E06F3007FEAFD /* User */ = {
+			isa = PBXGroup;
+			children = (
+				B7ED5A81219E0700007FEAFD /* ProfileViewController.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		B7F0D4F7219D445E00AAB205 /* Workouts */ = {
@@ -264,6 +275,7 @@
 				B73003A621951E3F0086A5F4 /* WorkoutsTableViewController.swift in Sources */,
 				B76B5A282196234B00A0316C /* RegisterViewController.swift in Sources */,
 				B73003A8219542B20086A5F4 /* WorkoutCreateViewController.swift in Sources */,
+				B7ED5A82219E0700007FEAFD /* ProfileViewController.swift in Sources */,
 				B721F7792150563D00306F1F /* AppDelegate.swift in Sources */,
 				B7ED5A7C219DFB66007FEAFD /* WorkoutEditViewController.swift in Sources */,
 			);
