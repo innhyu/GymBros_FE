@@ -584,6 +584,9 @@
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.40635850267913742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="register:" destination="BVF-9K-4fu" eventType="touchUpInside" id="xhV-sM-ylF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -606,6 +609,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="qnJ-HR-bQF"/>
-        <segue reference="1Vq-1R-1x0"/>
+        <segue reference="bae-hB-Ud9"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -31,7 +31,9 @@ class RegisterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
   
-  @IBAction func register() {
+  @IBAction func register(_ sender: Any) {
+    
+    // Fetching parameters needed for the registration
     let email: String? = self.userEmail.text
     let password: String? = self.password.text
     let passwordConfirmation: String? = self.passwordConfirmation.text
@@ -39,20 +41,51 @@ class RegisterViewController: UIViewController {
     let lastName: String? = self.lastName.text
     let gender: String? = self.gender.text
     let age: Int? = Int(self.age.text ?? "")
-    
+
+    // Constructing the parameters needed for the AlamoFire call
     let parameters: Parameters = [
       "email": email ?? "",
       "password": password ?? "",
-      "passwordConfirmation": passwordConfirmation ?? nil,
+      "password_confirmation": passwordConfirmation ?? "",
       "role": "Real",
-      "first_name": firstName,
-      "last_name": lastName,
-      "gender": gender,
-      "age": age ?? nil,
+      "first_name": firstName ?? "",
+      "last_name": lastName ?? "",
+      "gender": gender ?? "",
+      "age": age ?? "",
     ]
-    
-    
-  }
+
+    // Alamofire call to make the actual user
+    Alamofire.request("https://cryptic-temple-10365.herokuapp.com/users.json", method: .post, parameters: parameters)
+      .validate(statusCode: 200..<300)
+      .responseJSON { response in
+        print("Request: \(String(describing: response.request))")   // original url request
+        print("Response: \(String(describing: response.response))") // http url response
+        print("Result: \(response.result)")                         // response serialization result
+
+        if let json = response.result.value {
+
+          print("JSON: \(json)") // serialized json response
+          // Do something with this data!
+          let swiftyjson = JSON(json);
+          
+          // Showing the alert that tells user registration is complete;
+          // SIDE: Popping back to the login screen
+          let success = UIAlertController(title: "Alert", message: "User registered. Please login with the credentials.", preferredStyle: UIAlertControllerStyle.alert)
+          success.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+            self.navigationController?.popViewController(animated: true)
+          }))
+          self.present(success, animated: true, completion: nil)
+        }
+        else {
+          // Alert to show that the registration failed.
+          let fail = UIAlertController(title: "Alert", message: "Registration failed. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+          fail.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+            self.dismiss(animated: true, completion: nil)
+          }))
+          self.present(fail, animated: true, completion: nil)
+        }
+      }
+    }
 
     /*
     // MARK: - Navigation
