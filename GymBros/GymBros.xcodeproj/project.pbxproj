@@ -16,6 +16,7 @@
 		B73003A621951E3F0086A5F4 /* WorkoutsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73003A521951E3F0086A5F4 /* WorkoutsTableViewController.swift */; };
 		B73003A8219542B20086A5F4 /* WorkoutCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73003A7219542B20086A5F4 /* WorkoutCreateViewController.swift */; };
 		B76B5A282196234B00A0316C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76B5A272196234B00A0316C /* RegisterViewController.swift */; };
+		B7ED5A7C219DFB66007FEAFD /* WorkoutEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ED5A7B219DFB66007FEAFD /* WorkoutEditViewController.swift */; };
 		F782526FBF18748DB432895F /* Pods_GymBros.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFC18F267F15958EB7C96E7 /* Pods_GymBros.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		B73003A521951E3F0086A5F4 /* WorkoutsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsTableViewController.swift; sourceTree = "<group>"; };
 		B73003A7219542B20086A5F4 /* WorkoutCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCreateViewController.swift; sourceTree = "<group>"; };
 		B76B5A272196234B00A0316C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		B7ED5A7B219DFB66007FEAFD /* WorkoutEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutEditViewController.swift; sourceTree = "<group>"; };
 		B7FFCFCB217A578100577BB6 /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7FFCFCD217A578100577BB6 /* FacebookCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7FFCFCF217A578100577BB6 /* FacebookLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FacebookLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +110,7 @@
 				B73003A7219542B20086A5F4 /* WorkoutCreateViewController.swift */,
 				B73003A521951E3F0086A5F4 /* WorkoutsTableViewController.swift */,
 				2AEB898D2195553100D57AEC /* WorkoutShowViewController.swift */,
+				B7ED5A7B219DFB66007FEAFD /* WorkoutEditViewController.swift */,
 			);
 			path = Workouts;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				B76B5A282196234B00A0316C /* RegisterViewController.swift in Sources */,
 				B73003A8219542B20086A5F4 /* WorkoutCreateViewController.swift in Sources */,
 				B721F7792150563D00306F1F /* AppDelegate.swift in Sources */,
+				B7ED5A7C219DFB66007FEAFD /* WorkoutEditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
