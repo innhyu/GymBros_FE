@@ -10,8 +10,8 @@ target 'GymBros' do
   pod 'SwiftyJSON', '~> 4.0'
 
   # Pods for GymBros
-  pod 'FacebookCore'
-  pod 'FacebookLogin'
-  pod 'FacebookShare'
+  #pod 'FacebookCore'
+  #pod 'FacebookLogin'
+  #pod 'FacebookShare'
 
 end
