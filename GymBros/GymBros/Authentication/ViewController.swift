@@ -46,9 +46,9 @@ class ViewController: UIViewController {
                 print("JSON: \(json)") // serialized json response
                 let swiftyjson = JSON(json);
                 self.request.user_id = swiftyjson["id"].int
-                request.saveUser()
+                self.request.saveUser()
                 
-                self.performSegue(withIdentifier: "workoutCreated", sender: sender)
+                self.performSegue(withIdentifier: "loginSuccess", sender: sender)
             }
         }
     }
