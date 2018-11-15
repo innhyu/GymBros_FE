@@ -30,6 +30,14 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     gender.inputView = genderPicker
     genderPicker.delegate = self
   }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    self.navigationController?.isNavigationBarHidden = false
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    self.navigationController?.isNavigationBarHidden = true
+  }
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()

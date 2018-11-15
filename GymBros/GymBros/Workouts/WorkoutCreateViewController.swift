@@ -12,6 +12,10 @@ import SwiftyJSON
 
 class WorkoutCreateViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
   let locations = ["Wiegand Gymnasium", "Jared L. Cohon Center Gymnasium", "Skibo Gymnasium"]
+  let locationPicker = UIPickerView()
+  let durations = [30,45,60,75,90,120,150,180]
+  let durationPicker = UIPickerView()
+  let datePicker = UIDatePicker()
   
   @IBOutlet weak var workoutTitle: UITextField!
   @IBOutlet weak var workoutTime: UITextField!
@@ -24,10 +28,52 @@ class WorkoutCreateViewController: UIViewController, UIPickerViewDelegate, UIPic
     super.viewDidLoad()
 
     // Do any additional setup after loading the view.
-    let locationPicker = UIPickerView()
+    
+    // Buttons for toolbar UI
+    let doneDateButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDatePicker));
+    let doneLocationButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(cancelPicker));
+    let doneDurationButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(cancelPicker));
+    let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+    let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelPicker));
+    
+    // Location Picker
     workoutLocation.inputView = locationPicker
     locationPicker.delegate = self
     workoutLocation.text = locations[0]
+    
+    let locationToolbar = UIToolbar();
+    locationToolbar.sizeToFit();
+    locationToolbar.setItems([spaceButton, doneLocationButton, cancelButton], animated: false)
+    workoutLocation.inputAccessoryView = locationToolbar
+    
+    // Duration Picker
+    workoutDuration.inputView = durationPicker
+    durationPicker.delegate = self
+
+    let durationToolbar = UIToolbar();
+    durationToolbar.sizeToFit();
+    durationToolbar.setItems([spaceButton, doneDurationButton, cancelButton], animated: false)
+    workoutDuration.inputAccessoryView = durationToolbar
+    
+    // Date Picker
+    datePicker.datePickerMode = UIDatePickerMode.dateAndTime
+    workoutTime.inputView = datePicker
+    
+    let dateToolbar = UIToolbar();
+    dateToolbar.sizeToFit()
+    dateToolbar.setItems([spaceButton,doneDateButton,cancelButton], animated: false)
+    workoutTime.inputAccessoryView = dateToolbar
+  }
+  
+  @objc func doneDatePicker() {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd HH:mm"
+    workoutTime.text = formatter.string(from: datePicker.date)
+    self.view.endEditing(true)
+  }
+  
+  @objc func cancelPicker() {
+    self.view.endEditing(true)
   }
 
   override func didReceiveMemoryWarning() {
@@ -40,24 +86,42 @@ class WorkoutCreateViewController: UIViewController, UIPickerViewDelegate, UIPic
   }
   
   func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    return self.locations.count
+    if pickerView == locationPicker {
+      return self.locations.count
+    }
+    // case of pickerView == durationPicker
+    else {
+      return self.durations.count
+    }
   }
   
   func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    return self.locations[row]
+    if pickerView == locationPicker {
+      return self.locations[row]
+    }
+      // case of pickerView == durationPicker
+    else {
+      return String(self.durations[row])
+    }
   }
   
   func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    workoutLocation.text = self.locations[row]
-    self.view.endEditing(true)
+    if pickerView == locationPicker {
+      workoutLocation.text = self.locations[row]
+    }
+      // case of pickerView == durationPicker
+    else {
+      workoutDuration.text = String(self.durations[row])
+    }
   }
   
-  @IBAction func createWorkout(_ sender: Any){
+  @IBAction func createWorkout(_ sender: Any?){
+    /*
     // Fetching fields from the inputs
-    let title = self.workoutTitle.text;
-    let time = self.workoutTime.text;
+    let title: String? = self.workoutTitle.text;
+    let time: String? = self.workoutTime.text;
     let duration: Int? = Int(self.workoutDuration.text!);
-    let location = self.workoutLocation.text;
+    let location: String? = self.workoutLocation.text?.uppercased();
     // Type isn't used yet
     // let type = self.workoutType.text;
     let teamSize: Int? = Int(self.teamSize.text!);
@@ -73,7 +137,7 @@ class WorkoutCreateViewController: UIViewController, UIPickerViewDelegate, UIPic
       "location": location ?? "",
       "team_size": teamSize ?? ""
     ]
-
+    
     // Making Alamofire request
     Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts", method: .post, parameters: parameters)
     .validate(statusCode: 200..<300)
@@ -87,8 +151,8 @@ class WorkoutCreateViewController: UIViewController, UIPickerViewDelegate, UIPic
         print("JSON: \(json)") // serialized json response
         let swiftyjson = JSON(json);
         print(swiftyjson)
-        print(swiftyjson["location"])
-        self.performSegue(withIdentifier: "workoutCreated", sender: sender)
+        let workout_id = swiftyjson["id"]
+        self.performSegue(withIdentifier: "workoutCreated", sender: workout_id)
       }
       else {
         // Alert to show that the workout create failed to the user.
@@ -96,19 +160,24 @@ class WorkoutCreateViewController: UIViewController, UIPickerViewDelegate, UIPic
         fail.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         self.present(fail, animated: true, completion: nil)
       }
-    }
+    }*/
     
+    self.performSegue(withIdentifier: "workoutCreated", sender: 3)
   }
   
-
-  /*
   // MARK: - Navigation
 
   // In a storyboard-based application, you will often want to do a little preparation before navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      // Get the new view controller using segue.destinationViewController.
-      // Pass the selected object to the new view controller.
+    print("First")
+    print(segue.destination)
+    if let destinationVC = segue.destination as? WorkoutShowViewController {
+      print("Second")
+      if let index = sender as? Int {
+        print("Third")
+        destinationVC.index = index
+      }
+    }
   }
-  */
 
 }
