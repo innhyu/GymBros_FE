@@ -57,6 +57,8 @@ class ViewController: UIViewController {
                 self.present(fail, animated: true, completion: nil)
             }
         }
+//        self.request.user_id = 1
+//        self.request.saveUser()
     }
 
 }

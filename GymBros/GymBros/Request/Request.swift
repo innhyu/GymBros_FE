@@ -41,11 +41,13 @@ class Request {
     }
     
     func saveUser() {
-        let data = NSMutableData()
-        let archiver = NSKeyedArchiver(forWritingWith: data)
-        archiver.encode(self.user_id, forKey: "user_id")
-        archiver.finishEncoding()
-        data.write(toFile: dataFilePath(), atomically: true)
+        if let user_id = self.user_id {
+            let data = NSMutableData()
+            let archiver = NSKeyedArchiver(forWritingWith: data)
+            archiver.encode(user_id, forKey: "user_id")
+            archiver.finishEncoding()
+            data.write(toFile: dataFilePath(), atomically: true)
+        }
     }
     
     func loadUser() {
@@ -53,7 +55,7 @@ class Request {
         if FileManager.default.fileExists(atPath: path) {
             if let data = NSData(contentsOfFile: path) {
                 let unarchiver = NSKeyedUnarchiver(forReadingWith: data as Data)
-                self.user_id = Int(unarchiver.decodeDouble(forKey: "user_id"))
+                self.user_id = unarchiver.decodeInteger(forKey: "user_id")
                 unarchiver.finishDecoding()
             } else {
                 print("\nFILE NOT FOUND AT: \(path)")

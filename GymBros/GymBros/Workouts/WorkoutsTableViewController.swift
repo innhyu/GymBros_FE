@@ -12,14 +12,18 @@ import SwiftyJSON
 
 class WorkoutsTableViewController: UITableViewController {
     var workouts = [String]()
+    var request = Request()
   
     override func viewDidLoad() {
-      super.viewDidLoad()
-      self.tableView.delegate = self
-      self.tableView.dataSource = self
+        super.viewDidLoad()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        print(request.loadUser())
+        print(request.user_id ?? "No user_id found")
+        
       // Do any additional setup after loading the view, typically from a nib.
-      //get workouts from api
-      self.workouts = ["workout1", "workout2"]
+      // Fetch all workouts from the API
       Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts").responseJSON { response in
         print("Request: \(String(describing: response.request))")   // original url request
         print("Response: \(String(describing: response.response))") // http url response
@@ -29,7 +33,6 @@ class WorkoutsTableViewController: UITableViewController {
           
           print("JSON: \(json)") // serialized json response
           let swiftyjson = JSON(json)
-          print(swiftyjson[0])
           if swiftyjson.count > 0 {
             self.workouts = []
             for workout in swiftyjson.arrayValue {
