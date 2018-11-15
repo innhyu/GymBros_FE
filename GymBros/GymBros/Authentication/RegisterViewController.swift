@@ -79,9 +79,7 @@ class RegisterViewController: UIViewController {
         else {
           // Alert to show that the registration failed.
           let fail = UIAlertController(title: "Alert", message: "Registration failed. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
-          fail.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-            self.dismiss(animated: true, completion: nil)
-          }))
+          fail.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
           self.present(fail, animated: true, completion: nil)
         }
       }

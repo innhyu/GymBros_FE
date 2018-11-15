@@ -31,6 +31,7 @@ class WorkoutCreateViewController: UIViewController {
   }
   
   @IBAction func createWorkout(_ sender: Any){
+    // Fetching fields from the inputs
     let title = self.workoutTitle.text;
     let time = self.workoutTime.text;
     let duration: Int? = Int(self.workoutDuration.text!);
@@ -38,15 +39,19 @@ class WorkoutCreateViewController: UIViewController {
     let type = self.workoutType.text;
     let teamSize: Int? = Int(self.teamSize.text!);
 
+    // Constructing parameter needed for Alamofire Request
     let parameters: Parameters = [
+      // TODO: Do something with user_id
       "user_id": 1,
-      "title": title ?? nil,
-      "time": time, // "2007-12-04 00:00:00 -0000"
-      "duration": duration ?? nil,
+      "title": title ?? "",
+      "time": time ?? "", // "Format is in -> 2007-12-04 00:00:00 -0000"
+      "duration": duration ?? "",
+      // Do something with location to make a dropdown
       "location": "WIEGAND GYMNASIUM",
-      "team_size": teamSize ?? nil
+      "team_size": teamSize ?? ""
     ]
 
+    // Making Alamofire request
     Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts", method: .post, parameters: parameters)
     .validate(statusCode: 200..<300)
     .responseJSON { response in
@@ -61,6 +66,12 @@ class WorkoutCreateViewController: UIViewController {
         print(swiftyjson)
         print(swiftyjson["location"])
         self.performSegue(withIdentifier: "workoutCreated", sender: sender)
+      }
+      else {
+        // Alert to show that the workout create failed to the user.
+        let fail = UIAlertController(title: "Alert", message: "Workout create failed. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+        fail.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(fail, animated: true, completion: nil)
       }
     }
     

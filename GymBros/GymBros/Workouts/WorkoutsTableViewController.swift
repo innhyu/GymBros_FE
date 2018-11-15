@@ -58,11 +58,8 @@ class WorkoutsTableViewController: UITableViewController {
     }
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      print("Zero")
-      if let secondVC = segue.destination as? ShowViewController {
-        print("First")
+      if let secondVC = segue.destination as? WorkoutShowViewController {
         if let index = sender as? IndexPath{
-          print("Second")
           secondVC.index = index.row
         }
       }
