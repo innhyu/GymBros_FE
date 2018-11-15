@@ -11,7 +11,8 @@ import Alamofire
 import SwiftyJSON
 
 class ViewController: UIViewController {
-
+    let request = Request()
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
@@ -44,8 +45,8 @@ class ViewController: UIViewController {
                 
                 print("JSON: \(json)") // serialized json response
                 let swiftyjson = JSON(json);
-                let user_id = swiftyjson["id"].int
-                
+                self.request.user_id = swiftyjson["id"].int
+                request.saveUser()
                 
                 self.performSegue(withIdentifier: "workoutCreated", sender: sender)
             }
