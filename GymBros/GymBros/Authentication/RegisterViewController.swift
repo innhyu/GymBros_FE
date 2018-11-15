@@ -10,7 +10,9 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+  let genders = ["Male", "Female", "Other"]
+  
   @IBOutlet weak var userEmail: UITextField!
   @IBOutlet weak var password: UITextField!
   @IBOutlet weak var passwordConfirmation: UITextField!
@@ -20,16 +22,36 @@ class RegisterViewController: UIViewController {
   @IBOutlet weak var age: UITextField!
   
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
+    // Do any additional setup after loading the view.
+    let genderPicker = UIPickerView()
+    gender.inputView = genderPicker
+    genderPicker.delegate = self
+  }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
+  }
+  
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+  
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return self.genders.count
+  }
+  
+  func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    return self.genders[row]
+  }
+  
+  func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    gender.text = self.genders[row]
+    self.view.endEditing(true)
+  }
   
   @IBAction func register(_ sender: Any) {
     
