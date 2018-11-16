@@ -56,15 +56,15 @@ class WorkoutShowViewController: UIViewController {
                 self.owner_id = swiftyjson["owner"]["id"].int!
                 let fullOwnerName = "\(swiftyjson["owner"]["first_name"].string!) \(swiftyjson["owner"]["last_name"].string!)"
                 self.ownerName.text = fullOwnerName
+                
+                if self.owner_id == self.request.user_id! {
+                    self.workoutAction.setTitle("Finalize", for: .normal)
+                }
+                else {
+                    self.workoutAction.setTitle("Accept", for: .normal)
+                }
             }
-        }
-        
-        if self.owner_id == request.user_id! {
-            workoutAction.setTitle("Finalize", for: .normal)
-        }
-        else {
-            workoutAction.setTitle("Accept", for: .normal)
-        }
+        };
         
   }
   
