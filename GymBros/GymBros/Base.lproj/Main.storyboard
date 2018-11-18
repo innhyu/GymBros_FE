@@ -425,6 +425,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93787995329999996" green="1" blue="0.38486231050000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Finalize / Accept"/>
+                                <connections>
+                                    <action selector="workoutAction" destination="Pgh-a1-5bf" eventType="touchUpInside" id="LRG-iL-AVU"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5S3-Ed-gtp">
                                 <rect key="frame" x="0.0" y="606" width="121" height="61"/>
@@ -531,7 +534,7 @@
                         <outlet property="size" destination="cvc-eP-3kP" id="Lmc-xt-puS"/>
                         <outlet property="time" destination="lqJ-8P-PwQ" id="WCM-nx-X6i"/>
                         <outlet property="type" destination="8hA-jQ-NYX" id="vXS-Ws-lme"/>
-                        <outlet property="workoutAction" destination="gfA-mM-JdM" id="OhG-dj-NCB"/>
+                        <outlet property="workoutActionButton" destination="gfA-mM-JdM" id="Bb6-1u-t6V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7sZ-Si-4An" userLabel="First Responder" sceneMemberID="firstResponder"/>

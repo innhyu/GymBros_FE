@@ -78,6 +78,24 @@ class WorkoutShowViewController: UIViewController {
     @IBAction func workoutAction() {
         switch(self.workoutActionButton.currentTitle) {
         case "Join":
+            let parameters: Parameters = [
+                "workout_id": self.workout_id!,
+                "user_id": self.request.user_id!
+            ]
+            
+            Alamofire.request("https://cryptic-temple-10365.herokuapp.com/joined_workouts", method: .post, parameters: parameters)
+                .validate(statusCode: 200..<300)
+                .responseJSON { response in
+                print("Request: \(String(describing: response.request))")   // original url request
+                print("Response: \(String(describing: response.response))") // http url response
+                print("Result: \(response.result)")                         // response serialization result
+                
+                if let json = response.result.value {
+                    print("JSON: \(json)") // serialized json response
+                    let swiftyjson = JSON(json)
+                    self.workoutActionButton.setTitle("Accept", for: .normal)
+                }
+            };
             break;
         case "Finalize":
             break;
