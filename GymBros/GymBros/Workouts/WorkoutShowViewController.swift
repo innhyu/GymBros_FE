@@ -15,7 +15,7 @@ class WorkoutShowViewController: UIViewController {
     @IBOutlet var location: UILabel!
     @IBOutlet var type: UILabel!
     @IBOutlet var size: UILabel!
-    @IBOutlet var workoutAction: UIButton!
+    @IBOutlet var workoutActionButton: UIButton!
 
     var workout_id: Int?
     var owner_id: Int = 0
@@ -54,17 +54,66 @@ class WorkoutShowViewController: UIViewController {
                 let fullOwnerName = "\(swiftyjson["owner"]["first_name"].string!) \(swiftyjson["owner"]["last_name"].string!)"
                 self.ownerName.text = fullOwnerName
                 
-                if self.owner_id == self.request.user_id! {
-                    self.workoutAction.setTitle("Finalize", for: .normal)
+                if self.isOwner(jsondata: swiftyjson, user_id: self.request.user_id!) {
+                    self.workoutActionButton.setTitle("Finalize", for: .normal)
                 }
                 else {
-                    self.workoutAction.setTitle("Accept", for: .normal)
+                    if self.hasJoined(jsondata: swiftyjson, user_id: self.request.user_id!) {
+                        self.workoutActionButton.setTitle("Accept", for: .normal)
+                    }
+                    else {
+                        self.workoutActionButton.setTitle("Join", for: .normal)
+                    }
                 }
             }
         };
         
-  }
-  
+    }
+    
+    
+    // Function for the workoutActioButton
+    // Case "Join" - Joins the workout
+    // Case "Finalize" - For the host only, finalizes the workout so it can't be edited
+    // Case "Accept - For the user only, accepts changed workout details
+    @IBAction func workoutAction() {
+        switch(self.workoutActionButton.currentTitle) {
+        case "Join":
+            break;
+        case "Finalize":
+            break;
+        case "Accept":
+            break;
+        default:
+            break;
+        }
+    }
+    
+    // Function to check if from the returned json data that the current user is in the workout
+    func hasJoined(jsondata: JSON, user_id: Int) -> Bool {
+        let joined_workouts = jsondata["joined_workouts"]
+        for joined_workout in joined_workouts{
+            let (_, swiftyjson) = joined_workout
+            if let joined_user_id = swiftyjson["user_id"].int {
+                if joined_user_id == user_id {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    // Function to check if
+    func isOwner(jsondata: JSON, user_id: Int) -> Bool {
+        let owner = jsondata["owner"]
+        if let owner_id = owner["id"].int {
+            if owner_id == user_id {
+                return true
+            }
+        }
+        return false
+    }
+    
+    
 // Preparation is done in the table, not this
 //  func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
 //    if (segue.identifier == "toShowPage") {
