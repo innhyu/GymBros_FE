@@ -2,9 +2,6 @@
 //  ShowViewController.swift
 //  GymBros
 //
-//  Created by Dylan Schwartz on 11/9/18.
-//  Copyright © 2018 Carnegie Mellon University IS Dept. All rights reserved.
-//
 
 import UIKit
 import Alamofire

@@ -2,9 +2,6 @@
 //  Request.swift
 //  GymBros
 //
-//  Created by 이인혁 on 15/11/2018.
-//  Copyright © 2018 Carnegie Mellon University IS Dept. All rights reserved.
-//
 
 import Foundation
 
