@@ -131,13 +131,11 @@ class WorkoutShowViewController: UIViewController {
         return false
     }
     
-    
-// Preparation is done in the table, not this
-//  func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-//    if (segue.identifier == "toShowPage") {
-//      let index = sender as! IndexPath
-//      self.index = index.row
-//    }
-//  }
+    // Preparation for the table view cell
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? JoinedWorkoutTableViewController {
+            destination.joinedWorkouts = [("Andy", 1)]
+        }
+    }
   
 }
