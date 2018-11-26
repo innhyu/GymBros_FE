@@ -17,6 +17,7 @@
 		B73003A8219542B20086A5F4 /* WorkoutCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73003A7219542B20086A5F4 /* WorkoutCreateViewController.swift */; };
 		B76B5A282196234B00A0316C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76B5A272196234B00A0316C /* RegisterViewController.swift */; };
 		B7A8CC9321A534F600AC984D /* JoinedWorkoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A8CC9221A534F600AC984D /* JoinedWorkoutTableViewController.swift */; };
+		B7AA556721AC8E1200598192 /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AA556621AC8E1200598192 /* WorkoutTableViewCell.swift */; };
 		B7ED5A7C219DFB66007FEAFD /* WorkoutEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ED5A7B219DFB66007FEAFD /* WorkoutEditViewController.swift */; };
 		B7ED5A7F219E00ED007FEAFD /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ED5A7E219E00ED007FEAFD /* Request.swift */; };
 		B7ED5A82219E0700007FEAFD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ED5A81219E0700007FEAFD /* ProfileViewController.swift */; };
@@ -38,6 +39,7 @@
 		B73003A7219542B20086A5F4 /* WorkoutCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCreateViewController.swift; sourceTree = "<group>"; };
 		B76B5A272196234B00A0316C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B7A8CC9221A534F600AC984D /* JoinedWorkoutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedWorkoutTableViewController.swift; sourceTree = "<group>"; };
+		B7AA556621AC8E1200598192 /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		B7ED5A7B219DFB66007FEAFD /* WorkoutEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutEditViewController.swift; sourceTree = "<group>"; };
 		B7ED5A7E219E00ED007FEAFD /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		B7ED5A81219E0700007FEAFD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				B73003A521951E3F0086A5F4 /* WorkoutsTableViewController.swift */,
 				2AEB898D2195553100D57AEC /* WorkoutShowViewController.swift */,
 				B7ED5A7B219DFB66007FEAFD /* WorkoutEditViewController.swift */,
+				B7AA556621AC8E1200598192 /* WorkoutTableViewCell.swift */,
 			);
 			path = Workouts;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				B7ED5A7F219E00ED007FEAFD /* Request.swift in Sources */,
 				B7A8CC9321A534F600AC984D /* JoinedWorkoutTableViewController.swift in Sources */,
 				B721F77B2150563D00306F1F /* ViewController.swift in Sources */,
+				B7AA556721AC8E1200598192 /* WorkoutTableViewCell.swift in Sources */,
 				B73003A621951E3F0086A5F4 /* WorkoutsTableViewController.swift in Sources */,
 				B76B5A282196234B00A0316C /* RegisterViewController.swift in Sources */,
 				B73003A8219542B20086A5F4 /* WorkoutCreateViewController.swift in Sources */,
