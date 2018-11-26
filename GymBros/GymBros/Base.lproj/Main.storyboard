@@ -880,6 +880,7 @@
         <image name="Profile" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="LgT-Ib-GBy"/>
         <segue reference="ACZ-BS-af8"/>
         <segue reference="1Vq-1R-1x0"/>
     </inferredMetricsTieBreakers>
