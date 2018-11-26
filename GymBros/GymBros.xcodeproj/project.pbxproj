@@ -18,6 +18,7 @@
 		B76B5A282196234B00A0316C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76B5A272196234B00A0316C /* RegisterViewController.swift */; };
 		B7A8CC9321A534F600AC984D /* JoinedWorkoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A8CC9221A534F600AC984D /* JoinedWorkoutTableViewController.swift */; };
 		B7AA556721AC8E1200598192 /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AA556621AC8E1200598192 /* WorkoutTableViewCell.swift */; };
+		B7AA556921AC94BD00598192 /* JoinedWorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AA556821AC94BD00598192 /* JoinedWorkoutTableViewCell.swift */; };
 		B7ED5A7C219DFB66007FEAFD /* WorkoutEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ED5A7B219DFB66007FEAFD /* WorkoutEditViewController.swift */; };
 		B7ED5A7F219E00ED007FEAFD /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ED5A7E219E00ED007FEAFD /* Request.swift */; };
 		B7ED5A82219E0700007FEAFD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ED5A81219E0700007FEAFD /* ProfileViewController.swift */; };
@@ -40,6 +41,7 @@
 		B76B5A272196234B00A0316C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B7A8CC9221A534F600AC984D /* JoinedWorkoutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedWorkoutTableViewController.swift; sourceTree = "<group>"; };
 		B7AA556621AC8E1200598192 /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
+		B7AA556821AC94BD00598192 /* JoinedWorkoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedWorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		B7ED5A7B219DFB66007FEAFD /* WorkoutEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutEditViewController.swift; sourceTree = "<group>"; };
 		B7ED5A7E219E00ED007FEAFD /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		B7ED5A81219E0700007FEAFD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				B7A8CC9221A534F600AC984D /* JoinedWorkoutTableViewController.swift */,
+				B7AA556821AC94BD00598192 /* JoinedWorkoutTableViewCell.swift */,
 			);
 			path = JoinedWorkout;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7AA556921AC94BD00598192 /* JoinedWorkoutTableViewCell.swift in Sources */,
 				2AEB898E2195553100D57AEC /* WorkoutShowViewController.swift in Sources */,
 				B7ED5A7F219E00ED007FEAFD /* Request.swift in Sources */,
 				B7A8CC9321A534F600AC984D /* JoinedWorkoutTableViewController.swift in Sources */,

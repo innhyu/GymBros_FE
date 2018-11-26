@@ -18,7 +18,6 @@ class JoinedWorkoutTableViewController: UITableViewController {
         self.tableView.dataSource = self
         
         print(joinedWorkouts)
-        print("Hello")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -39,8 +38,9 @@ class JoinedWorkoutTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "joinedWorkout", for: indexPath)
-        cell.textLabel?.text = joinedWorkouts[indexPath.row].username
+        let cell = tableView.dequeueReusableCell(withIdentifier: "joinedWorkout", for: indexPath) as! JoinedWorkoutTableViewCell
+        let joinedWorkout = joinedWorkouts[indexPath.row]
+        cell.name?.text = joinedWorkout.username
         return cell
     }
 
