@@ -65,6 +65,12 @@ class WorkoutShowViewController: UIViewController {
                         self.workoutActionButton.setTitle("Join", for: .normal)
                     }
                 }
+                
+                // JoinedWorkout parsing section
+//                let allJoinedWorkouts = swiftyjson["joined_workouts"].array!
+//                allJoinedWorkouts.forEach { joinedWorkout in
+//                    joinedWorkout["user_id"]
+//                }
             }
         };
         
