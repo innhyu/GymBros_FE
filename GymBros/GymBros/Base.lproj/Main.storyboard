@@ -635,6 +635,9 @@
                                             <color key="backgroundColor" red="0.30196078431372547" green="0.84313725490196079" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <state key="normal" title="Accept"/>
+                                            <connections>
+                                                <action selector="acceptUser" destination="2L0-nh-Uxn" eventType="touchUpInside" id="hhV-jE-rWM"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifY-d7-Uj1">
                                             <rect key="frame" x="299" y="12" width="70" height="30"/>
@@ -657,6 +660,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="acceptButton" destination="TMs-uT-5AZ" id="pNy-at-YKf"/>
+                                    <outlet property="declineButton" destination="ifY-d7-Uj1" id="ct0-pp-gOe"/>
                                     <outlet property="name" destination="w5I-xA-eGV" id="Syb-oM-hg0"/>
                                     <outlet property="profileImage" destination="8mT-jC-0dV" id="SeD-F2-nMC"/>
                                 </connections>

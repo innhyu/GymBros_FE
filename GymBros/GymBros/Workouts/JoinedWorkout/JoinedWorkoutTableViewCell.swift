@@ -2,16 +2,19 @@
 //  JoinedWorkoutTableViewCell.swift
 //  GymBros
 //
-//  Created by 이인혁 on 26/11/2018.
-//  Copyright © 2018 Carnegie Mellon University IS Dept. All rights reserved.
-//
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class JoinedWorkoutTableViewCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var acceptButton: UIButton!
+    @IBOutlet weak var declineButton: UIButton!
+    
+    var user_id: Int!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,5 +26,26 @@ class JoinedWorkoutTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    @IBAction func acceptUser(){
+        
+        Alamofire.request("https://cryptic-temple-10365.herokuapp.com/joined_workouts/\(user_id)/accept", method: .patch)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+            print("Request: \(String(describing: response.request))")   // original url request
+            print("Response: \(String(describing: response.response))") // http url response
+            print("Result: \(response.result)")                         // response serialization result
+            
+            if let json = response.result.value {
+                
+                print("JSON: \(json)") // serialized json response
+                let swiftyjson = JSON(json)
+                
+                self.acceptButton.isHidden = true
+                self.declineButton.isHidden = true
+                
+            }
+        }
+    }
+    
 }

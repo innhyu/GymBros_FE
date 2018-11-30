@@ -20,6 +20,7 @@ class WorkoutShowViewController: UIViewController {
     var workout_id: Int?
     var owner_id: Int = 0
     var request = Request()
+    var childTableController: JoinedWorkoutTableViewController?
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +101,7 @@ class WorkoutShowViewController: UIViewController {
                     print("JSON: \(json)") // serialized json response
                     let swiftyjson = JSON(json)
                     self.workoutActionButton.setTitle("Accept", for: .normal)
+                    self.
                 }
             };
             break;
@@ -140,6 +142,7 @@ class WorkoutShowViewController: UIViewController {
     // Preparation for the table view cell
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? JoinedWorkoutTableViewController {
+            self.childTableController = destination
             destination.joinedWorkouts = [("Andy", 1)]
         }
     }

@@ -2,9 +2,6 @@
 //  JoinedWorkoutTableViewController.swift
 //  GymBros
 //
-//  Created by 이인혁 on 21/11/2018.
-//  Copyright © 2018 Carnegie Mellon University IS Dept. All rights reserved.
-//
 
 import UIKit
 
@@ -41,6 +38,8 @@ class JoinedWorkoutTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "joinedWorkout", for: indexPath) as! JoinedWorkoutTableViewCell
         let joinedWorkout = joinedWorkouts[indexPath.row]
         cell.name?.text = joinedWorkout.username
+        cell.user_id = joinedWorkout.id
+        
         return cell
     }
 
