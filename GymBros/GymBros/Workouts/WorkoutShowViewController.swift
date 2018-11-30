@@ -21,6 +21,7 @@ class WorkoutShowViewController: UIViewController {
     var owner_id: Int = 0
     var request = Request()
     var childTableController: JoinedWorkoutTableViewController?
+    var joinedWorkouts = [(username: String, id: Int)]()
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,10 +69,16 @@ class WorkoutShowViewController: UIViewController {
                 }
                 
                 // JoinedWorkout parsing section
-//                let allJoinedWorkouts = swiftyjson["joined_workouts"].array!
-//                allJoinedWorkouts.forEach { joinedWorkout in
-//                    joinedWorkout["user_id"]
-//                }
+                let allJoinedWorkouts = swiftyjson["joined_workouts"].array!
+                allJoinedWorkouts.forEach { joinedWorkout in
+                    let user = joinedWorkout[1]
+                    let user_id = user["id"].int!
+                    let name = "\(user["first_name"].string!) \(user["last_name"].string!)"
+                    self.joinedWorkouts.append((name, user_id))
+                }
+                
+                self.childTableController?.joinedWorkouts = self.joinedWorkouts
+                self.childTableController?.tableView.reloadData()
             }
         };
         
@@ -101,7 +108,6 @@ class WorkoutShowViewController: UIViewController {
                     print("JSON: \(json)") // serialized json response
                     let swiftyjson = JSON(json)
                     self.workoutActionButton.setTitle("Accept", for: .normal)
-                    self.
                 }
             };
             break;
@@ -143,7 +149,6 @@ class WorkoutShowViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? JoinedWorkoutTableViewController {
             self.childTableController = destination
-            destination.joinedWorkouts = [("Andy", 1)]
         }
     }
   

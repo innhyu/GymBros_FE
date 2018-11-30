@@ -14,8 +14,6 @@ class JoinedWorkoutTableViewController: UITableViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        print(joinedWorkouts)
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
