@@ -7,11 +7,10 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UITableViewController {
     let request = Request()
     
-    @IBOutlet weak var firstName: UILabel!
-    @IBOutlet weak var lastName: UILabel!
+    @IBOutlet weak var name: UILabel!
     @IBOutlet weak var age: UILabel!
     @IBOutlet weak var gender: UILabel!
     
@@ -33,10 +32,10 @@ class ProfileViewController: UIViewController {
                         
                         print("JSON: \(json)") // serialized json response
                         let swiftyjson = JSON(json);
-                        self.firstName.text = swiftyjson["first_name"].string
-                        self.lastName.text = swiftyjson["last_name"].string
+                        self.name.text = swiftyjson["first_name"].string ?? "Jon" + " " + (swiftyjson["last_name"].string ?? "Doe")
                         self.age.text = String(swiftyjson["age"].int ?? 9999)
                         self.gender.text = swiftyjson["gender"].string
+                        self.title = self.name.text
                     }
             }
         }
