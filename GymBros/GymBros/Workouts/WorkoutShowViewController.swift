@@ -21,7 +21,7 @@ class WorkoutShowViewController: UIViewController {
     var owner_id: Int = 0
     var request = Request()
     var childTableController: JoinedWorkoutTableViewController?
-    var joinedWorkouts = [(username: String, id: Int)]()
+    var joinedWorkouts = [(username: String, status: Int, id: Int)]()
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,10 +71,12 @@ class WorkoutShowViewController: UIViewController {
                 // JoinedWorkout parsing section
                 let allJoinedWorkouts = swiftyjson["joined_workouts"].array!
                 allJoinedWorkouts.forEach { joinedWorkout in
+                    let info = joinedWorkout[0]
+                    let status = info["accepted"].int!
+                    let joinedWorkout_id = info["id"].int!
                     let user = joinedWorkout[1]
-                    let user_id = user["id"].int!
                     let name = "\(user["first_name"].string!) \(user["last_name"].string!)"
-                    self.joinedWorkouts.append((name, user_id))
+                    self.joinedWorkouts.append((name, status, joinedWorkout_id))
                 }
                 
                 self.childTableController?.joinedWorkouts = self.joinedWorkouts

@@ -7,7 +7,7 @@ import UIKit
 
 class JoinedWorkoutTableViewController: UITableViewController {
     // Saving both workout title and id
-    var joinedWorkouts = [(username: String, id: Int)]()
+    var joinedWorkouts = [(username: String, status: Int, id: Int)]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +40,13 @@ class JoinedWorkoutTableViewController: UITableViewController {
         
         cell.name?.text = joinedWorkout.username
         cell.user_id = joinedWorkout.id
+        
+        // Not showing accept / decline button for accepted users
+        if joinedWorkout.status == 1 {
+            cell.acceptButton.isHidden = true
+            cell.declineButton.isHidden = true
+        }
+        
         
         return cell
     }
