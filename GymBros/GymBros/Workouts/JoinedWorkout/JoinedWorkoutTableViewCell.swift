@@ -15,6 +15,7 @@ class JoinedWorkoutTableViewCell: UITableViewCell {
     @IBOutlet weak var declineButton: UIButton!
     
     var user_id: Int?
+    var parentTableController: JoinedWorkoutTableViewController?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,5 +48,29 @@ class JoinedWorkoutTableViewCell: UITableViewCell {
             }
         }
     }
+    
+//    @IBAction func declineUser(){
+//
+//        Alamofire.request("https://cryptic-temple-10365.herokuapp.com/joined_workouts/\(user_id!)", method: .delete)
+//            .validate(statusCode: 200..<300)
+//            .responseJSON { response in
+//                print("Request: \(String(describing: response.request))")   // original url request
+//                print("Response: \(String(describing: response.response))") // http url response
+//                print("Result: \(response.result)")                         // response serialization result
+//                
+//                if let json = response.result.value {
+//
+//                    print("JSON: \(json)") // serialized json response
+//                    let swiftyjson = JSON(json)
+//
+//                    if let tableController = self.parentTableController? {
+//                        if let myTableView = tableController.tableView {
+//                            let indexPath = myTableView.indexPath(for: self)
+//                            tableController.joinedWorkouts.remove
+//                        }
+//                    }
+//                }
+//        }
+//    }
     
 }
