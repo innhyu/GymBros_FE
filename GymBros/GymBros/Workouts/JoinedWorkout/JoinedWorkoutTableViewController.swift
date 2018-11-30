@@ -35,6 +35,9 @@ class JoinedWorkoutTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "joinedWorkout", for: indexPath) as! JoinedWorkoutTableViewCell
         let joinedWorkout = joinedWorkouts[indexPath.row]
+        
+        print(joinedWorkout)
+        
         cell.name?.text = joinedWorkout.username
         cell.user_id = joinedWorkout.id
         
