@@ -124,10 +124,11 @@ class WorkoutShowViewController: UIViewController {
     
     // Function to check if from the returned json data that the current user is in the workout
     func hasJoined(jsondata: JSON, user_id: Int) -> Bool {
-        let joined_workouts = jsondata["joined_workouts"]
-        for joined_workout in joined_workouts{
-            let (_, swiftyjson) = joined_workout
-            if let joined_user_id = swiftyjson["user_id"].int {
+        let joined_workouts_users = jsondata["joined_workouts"]
+        for jwu in joined_workouts_users{
+            let (_, swiftyjson) = jwu
+            let joined_workout = swiftyjson[0]
+            if let joined_user_id = joined_workout["user_id"].int {
                 if joined_user_id == user_id {
                     return true
                 }
