@@ -9,18 +9,18 @@ import SwiftyJSON
 
 class JoinedWorkoutTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var acceptButton: UIButton!
-    @IBOutlet weak var declineButton: UIButton!
+  @IBOutlet weak var name: UILabel!
+  @IBOutlet weak var identity: UILabel!
+  @IBOutlet weak var acceptButton: UIButton!
+  @IBOutlet weak var declineButton: UIButton!
     
-    var user_id: Int?
-    var parentTableController: JoinedWorkoutTableViewController?
+  var user_id: Int?
+  var parentTableController: JoinedWorkoutTableViewController?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    // Initialization code
+  }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
