@@ -16,6 +16,7 @@ class WorkoutShowViewController: UIViewController {
   @IBOutlet var size: UILabel!
   @IBOutlet var workoutActionButton: UIButton!
 
+  var workout_id: Int?
   var workout: Workout?
   var request = Request()
   var childTableController: JoinedWorkoutTableViewController?
@@ -24,7 +25,7 @@ class WorkoutShowViewController: UIViewController {
       super.viewDidLoad()
       request.loadUser()
     
-    Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(self.workout!.id!)/\(request.user_id!)").responseJSON { response in
+    Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(workout_id!)/\(request.user_id!)").responseJSON { response in
           print("Request: \(String(describing: response.request))")   // original url request
           print("Response: \(String(describing: response.response))") // http url response
           print("Result: \(response.result)")                         // response serialization result
@@ -93,7 +94,7 @@ class WorkoutShowViewController: UIViewController {
     self.ownerName.text = self.workout!.owner_name!
     
     // Sending correcrt data for JoinedWorkouts
-    self.childTableController?.joinedWorkouts = self.workout!.joined_workouts
+    self.childTableController?.joined_workouts = self.workout!.joined_workouts
     self.childTableController?.tableView.reloadData()
   }
 

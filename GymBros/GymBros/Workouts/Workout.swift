@@ -22,13 +22,12 @@ class Workout: NSObject {
   // Mark: - General
   
   init(swiftyjson: JSON){
-
+    super.init()
+    
     // Parse the json for each necessary parts
     self.parseWorkout(swiftyjson: swiftyjson)
     self.parseOwner(swiftyjson: swiftyjson)
     self.parseJoinedWorkouts(swiftyjson: swiftyjson)
-    
-    super.init()
   }
   
   // Function to parse workout information and set information accordingly
