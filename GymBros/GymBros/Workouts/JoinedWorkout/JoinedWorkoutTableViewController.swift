@@ -42,12 +42,15 @@ class JoinedWorkoutTableViewController: UITableViewController {
     cell.name?.text = joinedWorkout.full_name!
     if joinedWorkout.is_owner! {
       cell.identity.text = "Owner"
+      cell.identity.backgroundColor = UIColor(red: 45/255, green: 94/255, blue: 255/255, alpha: 0.5)
     }
     else if joinedWorkout.accepted! {
       cell.identity.text = "Member"
+      cell.identity.backgroundColor = UIColor(red: 128/255, green: 232/255, blue: 38/255, alpha: 0.5)
     }
     else {
       cell.identity.text = "Pending"
+      cell.identity.backgroundColor = UIColor(red: 212/255, green: 232/255, blue: 226/255, alpha: 1.0)
     }
     cell.user_id = joinedWorkout.user_id!
     cell.parentTableController? = self
