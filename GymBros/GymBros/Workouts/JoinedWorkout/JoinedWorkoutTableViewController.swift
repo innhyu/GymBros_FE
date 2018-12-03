@@ -7,18 +7,21 @@ import UIKit
 
 class JoinedWorkoutTableViewController: UITableViewController {
   // Mark: - Properties
-  var joined_workouts = [JoinedWorkout]()
-    
+  var workout: Workout?
+  var request = Request()
+  
   override func viewDidLoad() {
-      super.viewDidLoad()
-      self.tableView.delegate = self
-      self.tableView.dataSource = self
-    
-      // Uncomment the following line to preserve selection between presentations
-      // self.clearsSelectionOnViewWillAppear = false
+    super.viewDidLoad()
+    self.tableView.delegate = self
+    self.tableView.dataSource = self
+  
+    request.loadUser();
+  
+    // Uncomment the following line to preserve selection between presentations
+    // self.clearsSelectionOnViewWillAppear = false
 
-      // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-      // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem
   }
 
   override func didReceiveMemoryWarning() {
@@ -29,37 +32,44 @@ class JoinedWorkoutTableViewController: UITableViewController {
   // MARK: - Table view data source
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.joined_workouts.count
+    if let workout = self.workout {
+      return workout.joined_workouts.count
+    }
+    return 0
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     // Prepare cell and necessary info
     let cell = tableView.dequeueReusableCell(withIdentifier: "joinedWorkout", for: indexPath) as! JoinedWorkoutTableViewCell
 
-    let joinedWorkout = joined_workouts[indexPath.row]
-    
-    // Setting cell info
-    cell.name?.text = joinedWorkout.full_name!
-    if joinedWorkout.is_owner! {
-      cell.identity.text = "Owner"
-      cell.identity.backgroundColor = UIColor(red: 45/255, green: 94/255, blue: 255/255, alpha: 0.5)
-    }
-    else if joinedWorkout.accepted! {
-      cell.identity.text = "Member"
-      cell.identity.backgroundColor = UIColor(red: 128/255, green: 232/255, blue: 38/255, alpha: 0.5)
-    }
-    else {
-      cell.identity.text = "Pending"
-      cell.identity.backgroundColor = UIColor(red: 212/255, green: 232/255, blue: 226/255, alpha: 1.0)
-    }
-    cell.user_id = joinedWorkout.user_id!
-    cell.parentTableController? = self
-    
+    if let workout = self.workout {
+      
+      let joinedWorkout = workout.joined_workouts[indexPath.row]
+      
+      // Setting cell info
+      cell.name?.text = joinedWorkout.full_name!
+      if joinedWorkout.is_owner! {
+        cell.identity.text = "Owner"
+        cell.identity.backgroundColor = UIColor(red: 45/255, green: 94/255, blue: 255/255, alpha: 0.5)
+      }
+      else if joinedWorkout.accepted! {
+        cell.identity.text = "Member"
+        cell.identity.backgroundColor = UIColor(red: 128/255, green: 232/255, blue: 38/255, alpha: 0.5)
+      }
+      else {
+        cell.identity.text = "Pending"
+        cell.identity.backgroundColor = UIColor(red: 212/255, green: 232/255, blue: 226/255, alpha: 1.0)
+      }
+      cell.user_id = joinedWorkout.user_id!
+      cell.parentTableController? = self
+      
 
-    // Not showing accept / decline button for accepted users
-    if (joinedWorkout.accepted)! {
-        cell.acceptButton.isHidden = true
-        cell.declineButton.isHidden = true
+      // Not showing accept / decline button for accepted users
+      
+      if (joinedWorkout.accepted)! {
+          cell.acceptButton.isHidden = true
+          cell.declineButton.isHidden = true
+      }
     }
     
     return cell

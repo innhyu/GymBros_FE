@@ -42,7 +42,7 @@ class WorkoutShowViewController: UIViewController {
             self.setButton()
             
             // Sending correcrt data for JoinedWorkouts
-            self.childTableController?.joined_workouts = self.workout!.joined_workouts
+            self.childTableController?.workout = self.workout!
             self.childTableController?.tableView.reloadData()
 
           }
