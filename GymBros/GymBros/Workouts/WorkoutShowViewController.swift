@@ -20,7 +20,6 @@ class WorkoutShowViewController: UIViewController {
     var owner_id: Int = 0
     var request = Request()
     var childTableController: JoinedWorkoutTableViewController?
-    var joinedWorkouts = [(username: String, status: Int, id: Int)]()
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,29 +37,12 @@ class WorkoutShowViewController: UIViewController {
                 
                 // Parse and set swiftyjson
                 self.parseAndSetWorkout(swiftyjson: swiftyjson)
-                
-                // Owner parsing section
-                self.owner_id = swiftyjson["owner"]["id"].int!
-                let fullOwnerName = "\(swiftyjson["owner"]["first_name"].string!) \(swiftyjson["owner"]["last_name"].string!)"
-                self.ownerName.text = fullOwnerName
-                
-                // JoinedWorkout parsing section
-                let allJoinedWorkouts = swiftyjson["joined_workouts"].array!
-                allJoinedWorkouts.forEach { joinedWorkout in
-                    let info = joinedWorkout[0]
-                    let status = info["accepted"].int!
-                    let joinedWorkout_id = info["id"].int!
-                    let user = joinedWorkout[1]
-                    let name = "\(user["first_name"].string!) \(user["last_name"].string!)"
-                    self.joinedWorkouts.append((name, status, joinedWorkout_id))
-                }
+                self.parseAndSetOwner(swiftyjson: swiftyjson)
+                self.parseAndSetJoinedWorkouts(swiftyjson: swiftyjson)
                 
                 // Display correct title for button
                 self.setButton(swiftyjson: swiftyjson)
-                
-                // Sending correcrt data for JoinedWorkouts
-                self.childTableController?.joinedWorkouts = self.joinedWorkouts
-                self.childTableController?.tableView.reloadData()
+
             }
         };
         
@@ -117,6 +99,33 @@ class WorkoutShowViewController: UIViewController {
         self.size.text = String(swiftyjson["workout"]["team_size"].int!)
     }
     
+    // Function to parse owner information and set information accordingly
+    func parseAndSetOwner(swiftyjson: JSON){
+        self.owner_id = swiftyjson["owner"]["id"].int!
+        let fullOwnerName = "\(swiftyjson["owner"]["first_name"].string!) \(swiftyjson["owner"]["last_name"].string!)"
+        self.ownerName.text = fullOwnerName
+    }
+    
+    // Function parse joinedWorkouts and
+    func parseAndSetJoinedWorkouts(swiftyjson: JSON){
+        var joinedWorkouts = [(username: String, status: Int, id: Int)]()
+        
+        // Parsing joinedWorkouts
+        let allJoinedWorkouts = swiftyjson["joined_workouts"].array!
+        allJoinedWorkouts.forEach { joinedWorkout in
+            let info = joinedWorkout[0]
+            let status = info["accepted"].int!
+            let joinedWorkout_id = info["id"].int!
+            let user = joinedWorkout[1]
+            let name = "\(user["first_name"].string!) \(user["last_name"].string!)"
+            joinedWorkouts.append((name, status, joinedWorkout_id))
+        }
+        
+        // Sending correcrt data for JoinedWorkouts
+        self.childTableController?.joinedWorkouts = joinedWorkouts
+        self.childTableController?.tableView.reloadData()
+    }
+    
     // Function to display the correct type of workout action button depending on status
     func setButton(swiftyjson: JSON) {
         if self.isOwner(jsondata: swiftyjson, user_id: self.request.user_id!) {
@@ -147,7 +156,7 @@ class WorkoutShowViewController: UIViewController {
         return false
     }
     
-    // Function to check if
+    // Function to check if user_id is an owner of workout
     func isOwner(jsondata: JSON, user_id: Int) -> Bool {
         let owner = jsondata["owner"]
         if let owner_id = owner["id"].int {
@@ -160,6 +169,7 @@ class WorkoutShowViewController: UIViewController {
     
     // Preparation for the table view cell
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Making reference to childTableController
         if let destination = segue.destination as? JoinedWorkoutTableViewController {
             self.childTableController = destination
         }
