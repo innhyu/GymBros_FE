@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0DE-gX-sKd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0DE-gX-sKd">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -54,14 +54,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qps-xN-exp">
                                 <rect key="frame" x="44" y="388" width="281" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ikx-52-qPc">
                                 <rect key="frame" x="44" y="426" width="55" height="18"/>
@@ -262,9 +262,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="oxh-V9-chS"/>
                     </view>
-                    <navigationItem key="navigationItem" title="10/31 (Wed)" id="Ys1-83-Oy7">
-                        <barButtonItem key="leftBarButtonItem" title="SORT" id="3Ji-Q9-MCv"/>
-                        <barButtonItem key="rightBarButtonItem" title="FILTER" id="2uZ-4y-5xP"/>
+                    <navigationItem key="navigationItem" title="Available Workouts" id="Ys1-83-Oy7">
+                        <barButtonItem key="leftBarButtonItem" title="DATE" id="3Ji-Q9-MCv"/>
+                        <barButtonItem key="rightBarButtonItem" title="OPTIONS" id="2uZ-4y-5xP"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRw-yQ-S2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -504,7 +504,7 @@
             </objects>
             <point key="canvasLocation" x="2918" y="1406"/>
         </scene>
-        <!--Workout Show View Controller-->
+        <!--Title-->
         <scene sceneID="NRY-qp-8wt">
             <objects>
                 <viewController id="Pgh-a1-5bf" customClass="WorkoutShowViewController" customModule="GymBros" customModuleProvider="target" sceneMemberID="viewController">
@@ -621,13 +621,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nxd-k6-ILS">
-                                <rect key="frame" x="0.0" y="112" width="376" height="370"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="BFB-cu-f3I" kind="embed" identifier="EmbedSegue" id="W0u-Mt-Uxv"/>
-                                </connections>
-                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZIW-MF-1Wu">
                                 <rect key="frame" x="125" y="607" width="125" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -641,11 +634,18 @@
                                     <segue destination="oJo-wq-Maj" kind="showDetail" id="1Vq-1R-1x0"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nxd-k6-ILS">
+                                <rect key="frame" x="0.0" y="237" width="376" height="153"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="BFB-cu-f3I" kind="embed" identifier="EmbedSegue" id="W0u-Mt-Uxv"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="wRa-xY-2a4"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0mM-6X-FYN"/>
+                    <navigationItem key="navigationItem" title="Title" id="0mM-6X-FYN"/>
                     <connections>
                         <outlet property="location" destination="cVg-WG-KhH" id="9Ia-NC-ni9"/>
                         <outlet property="name" destination="BkF-Q5-YEy" id="4OO-mU-mDS"/>
@@ -658,14 +658,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7sZ-Si-4An" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4653.6000000000004" y="1405.5472263868066"/>
+            <point key="canvasLocation" x="4652.8000000000002" y="1405.097451274363"/>
         </scene>
         <!--Joined Workout Table View Controller-->
         <scene sceneID="2Rr-fD-u58">
             <objects>
                 <tableViewController id="BFB-cu-f3I" customClass="JoinedWorkoutTableViewController" customModule="GymBros" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="o6B-ks-a5S">
-                        <rect key="frame" x="0.0" y="0.0" width="376" height="370"/>
+                        <rect key="frame" x="0.0" y="0.0" width="376" height="153"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -682,6 +682,9 @@
                                             <color key="backgroundColor" red="0.30196078431372547" green="0.84313725490196079" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <state key="normal" title="Accept"/>
+                                            <connections>
+                                                <action selector="acceptUser" destination="2L0-nh-Uxn" eventType="touchUpInside" id="hhV-jE-rWM"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifY-d7-Uj1">
                                             <rect key="frame" x="299" y="12" width="70" height="30"/>
@@ -704,6 +707,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="acceptButton" destination="TMs-uT-5AZ" id="pNy-at-YKf"/>
+                                    <outlet property="declineButton" destination="ifY-d7-Uj1" id="ct0-pp-gOe"/>
                                     <outlet property="name" destination="w5I-xA-eGV" id="Syb-oM-hg0"/>
                                     <outlet property="profileImage" destination="8mT-jC-0dV" id="SeD-F2-nMC"/>
                                 </connections>
@@ -1003,6 +1008,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ISo-p4-gNq"/>
-        <segue reference="q2w-iC-QJv"/>
+        <segue reference="1Vq-1R-1x0"/>
     </inferredMetricsTieBreakers>
 </document>

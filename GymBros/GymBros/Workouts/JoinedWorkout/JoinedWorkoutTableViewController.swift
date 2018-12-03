@@ -2,23 +2,18 @@
 //  JoinedWorkoutTableViewController.swift
 //  GymBros
 //
-//  Created by 이인혁 on 21/11/2018.
-//  Copyright © 2018 Carnegie Mellon University IS Dept. All rights reserved.
-//
 
 import UIKit
 
 class JoinedWorkoutTableViewController: UITableViewController {
     // Saving both workout title and id
-    var joinedWorkouts = [(username: String, id: Int)]()
+    var joinedWorkouts = [(username: String, status: Int, id: Int)]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        print(joinedWorkouts)
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -40,7 +35,20 @@ class JoinedWorkoutTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "joinedWorkout", for: indexPath) as! JoinedWorkoutTableViewCell
         let joinedWorkout = joinedWorkouts[indexPath.row]
+        
+        print(joinedWorkout)
+        
         cell.name?.text = joinedWorkout.username
+        cell.user_id = joinedWorkout.id
+        cell.parentTableController? = self
+        
+        // Not showing accept / decline button for accepted users
+        if joinedWorkout.status == 1 {
+            cell.acceptButton.isHidden = true
+            cell.declineButton.isHidden = true
+        }
+        
+        
         return cell
     }
 

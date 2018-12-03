@@ -20,6 +20,8 @@ class WorkoutShowViewController: UIViewController {
     var workout_id: Int?
     var owner_id: Int = 0
     var request = Request()
+    var childTableController: JoinedWorkoutTableViewController?
+    var joinedWorkouts = [(username: String, status: Int, id: Int)]()
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +30,7 @@ class WorkoutShowViewController: UIViewController {
         
         let formatter = DateFormatter()
         
-        Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(workout_id!)").responseJSON { response in
+        Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(workout_id!)/\(request.user_id!)").responseJSON { response in
             print("Request: \(String(describing: response.request))")   // original url request
             print("Response: \(String(describing: response.response))") // http url response
             print("Result: \(response.result)")                         // response serialization result
@@ -37,7 +39,11 @@ class WorkoutShowViewController: UIViewController {
             
                 print("JSON: \(json)") // serialized json response
                 let swiftyjson = JSON(json)
+                print(self.navigationItem.title)
                 self.name.text = swiftyjson["workout"]["title"].string
+                self.navigationItem.title = swiftyjson["workout"]["title"].string!
+                
+                print(self.navigationItem.title)
                 // Turning API date string into Date object
                 formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
                 let date = formatter.date(from: swiftyjson["workout"]["time"].string!)
@@ -54,23 +60,19 @@ class WorkoutShowViewController: UIViewController {
                 let fullOwnerName = "\(swiftyjson["owner"]["first_name"].string!) \(swiftyjson["owner"]["last_name"].string!)"
                 self.ownerName.text = fullOwnerName
                 
-                if self.isOwner(jsondata: swiftyjson, user_id: self.request.user_id!) {
-                    self.workoutActionButton.setTitle("Finalize", for: .normal)
-                }
-                else {
-                    if self.hasJoined(jsondata: swiftyjson, user_id: self.request.user_id!) {
-                        self.workoutActionButton.setTitle("Accept", for: .normal)
-                    }
-                    else {
-                        self.workoutActionButton.setTitle("Join", for: .normal)
-                    }
+                // JoinedWorkout parsing section
+                let allJoinedWorkouts = swiftyjson["joined_workouts"].array!
+                allJoinedWorkouts.forEach { joinedWorkout in
+                    let info = joinedWorkout[0]
+                    let status = info["accepted"].int!
+                    let joinedWorkout_id = info["id"].int!
+                    let user = joinedWorkout[1]
+                    let name = "\(user["first_name"].string!) \(user["last_name"].string!)"
+                    self.joinedWorkouts.append((name, status, joinedWorkout_id))
                 }
                 
-                // JoinedWorkout parsing section
-//                let allJoinedWorkouts = swiftyjson["joined_workouts"].array!
-//                allJoinedWorkouts.forEach { joinedWorkout in
-//                    joinedWorkout["user_id"]
-//                }
+                self.childTableController?.joinedWorkouts = self.joinedWorkouts
+                self.childTableController?.tableView.reloadData()
             }
         };
         
@@ -112,12 +114,28 @@ class WorkoutShowViewController: UIViewController {
         }
     }
     
+    // Function to display the correct type of workout action button depending on status
+    func setButton(swiftyjson: JSON) {
+        if self.isOwner(jsondata: swiftyjson, user_id: self.request.user_id!) {
+            self.workoutActionButton.setTitle("Finalize", for: .normal)
+        }
+        else {
+            if self.hasJoined(jsondata: swiftyjson, user_id: self.request.user_id!) {
+                self.workoutActionButton.setTitle("Accept", for: .normal)
+            }
+            else {
+                self.workoutActionButton.setTitle("Join", for: .normal)
+            }
+        }
+    }
+    
     // Function to check if from the returned json data that the current user is in the workout
     func hasJoined(jsondata: JSON, user_id: Int) -> Bool {
-        let joined_workouts = jsondata["joined_workouts"]
-        for joined_workout in joined_workouts{
-            let (_, swiftyjson) = joined_workout
-            if let joined_user_id = swiftyjson["user_id"].int {
+        let joined_workouts_users = jsondata["joined_workouts"]
+        for jwu in joined_workouts_users{
+            let (_, swiftyjson) = jwu
+            let joined_workout = swiftyjson[0]
+            if let joined_user_id = joined_workout["user_id"].int {
                 if joined_user_id == user_id {
                     return true
                 }
@@ -140,7 +158,7 @@ class WorkoutShowViewController: UIViewController {
     // Preparation for the table view cell
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? JoinedWorkoutTableViewController {
-            destination.joinedWorkouts = [("Andy", 1)]
+            self.childTableController = destination
         }
     }
   
