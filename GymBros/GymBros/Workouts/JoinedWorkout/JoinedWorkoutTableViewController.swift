@@ -65,10 +65,13 @@ class JoinedWorkoutTableViewController: UITableViewController {
       
 
       // Not showing accept / decline button for accepted users
-      
-      if (joinedWorkout.accepted)! {
-          cell.acceptButton.isHidden = true
-          cell.declineButton.isHidden = true
+      if !(workout.isOwner(user_id: request.user_id!)){
+        cell.acceptButton.isHidden = true
+        cell.declineButton.isHidden = true
+      }
+      else if (joinedWorkout.accepted)! {
+        cell.acceptButton.isHidden = true
+        cell.declineButton.isHidden = true
       }
     }
     
