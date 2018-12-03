@@ -7,7 +7,7 @@ import UIKit
 
 class JoinedWorkoutTableViewController: UITableViewController {
   // Mark: - Properties
-  var joined_workouts: [JoinedWorkout]?
+  var joined_workouts = [JoinedWorkout]()
     
   override func viewDidLoad() {
       super.viewDidLoad()
@@ -29,13 +29,14 @@ class JoinedWorkoutTableViewController: UITableViewController {
   // MARK: - Table view data source
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return joined_workouts!.count
+    return self.joined_workouts.count
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     // Prepare cell and necessary info
     let cell = tableView.dequeueReusableCell(withIdentifier: "joinedWorkout", for: indexPath) as! JoinedWorkoutTableViewCell
-    let joinedWorkout = joined_workouts![indexPath.row]
+
+    let joinedWorkout = joined_workouts[indexPath.row]
     
     // Setting cell info
     cell.name?.text = joinedWorkout.full_name!
@@ -43,12 +44,11 @@ class JoinedWorkoutTableViewController: UITableViewController {
     cell.parentTableController? = self
 
     // Not showing accept / decline button for accepted users
-    if joinedWorkout.accepted! {
+    if (joinedWorkout.accepted)! {
         cell.acceptButton.isHidden = true
         cell.declineButton.isHidden = true
     }
-
-
+    
     return cell
   }
 

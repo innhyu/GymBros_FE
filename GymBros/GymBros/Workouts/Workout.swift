@@ -17,7 +17,7 @@ class Workout: NSObject {
   var teamSize: Int?
   var owner_id: Int?
   var owner_name: String?
-  var joined_workouts: [JoinedWorkout]?
+  var joined_workouts = [JoinedWorkout]()
   
   // Mark: - General
   
@@ -64,14 +64,14 @@ class Workout: NSObject {
     let allJoinedWorkouts = swiftyjson["joined_workouts"].array!
     allJoinedWorkouts.forEach { joinedWorkout in
       let joinedWorkoutObject = JoinedWorkout(swiftyjsonArray: joinedWorkout)
-      self.joined_workouts?.append(joinedWorkoutObject)
+      self.joined_workouts.append(joinedWorkoutObject)
     }
     
   }
   
   // Function to check if from the returned json data that the current user is in the workout
   func hasJoined(user_id: Int) -> Bool {
-    for joined_workout in self.joined_workouts! {
+    for joined_workout in self.joined_workouts {
       if user_id == joined_workout.user_id! {
         return true
       }

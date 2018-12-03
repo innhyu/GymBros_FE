@@ -22,8 +22,10 @@ class WorkoutShowViewController: UIViewController {
   var childTableController: JoinedWorkoutTableViewController?
   
   override func viewDidLoad() {
-      super.viewDidLoad()
-      request.loadUser()
+    super.viewDidLoad()
+    request.loadUser()
+    
+    print("HELLO")
     
     Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(workout_id!)/\(request.user_id!)").responseJSON { response in
           print("Request: \(String(describing: response.request))")   // original url request
@@ -31,16 +33,24 @@ class WorkoutShowViewController: UIViewController {
           print("Result: \(response.result)")                         // response serialization result
         
           if let json = response.result.value {
+        
+            print("JSON: \(json)") // serialized json response
+            let swiftyjson = JSON(json)
           
-              print("JSON: \(json)") // serialized json response
-              let swiftyjson = JSON(json)
+            // Create a workout instance
+            self.workout = Workout(swiftyjson: swiftyjson)
+  
+            // Setting appropriate labels
+            self.setLabels()
+            self.setButton()
+          
+            print("Checking Here")
+            print(self.workout!)
+            print(self.workout!.joined_workouts)
             
-              // Create a workout instance
-              self.workout = Workout(swiftyjson: swiftyjson)
-    
-              // Setting appropriate labels
-              self.setLabels()
-              self.setButton()
+            // Sending correcrt data for JoinedWorkouts
+            self.childTableController?.joined_workouts = self.workout!.joined_workouts
+            self.childTableController?.tableView.reloadData()
 
           }
       };
@@ -92,10 +102,7 @@ class WorkoutShowViewController: UIViewController {
     self.location.text = self.workout!.location!
     self.size.text = String(self.workout!.teamSize!)
     self.ownerName.text = self.workout!.owner_name!
-    
-    // Sending correcrt data for JoinedWorkouts
-    self.childTableController?.joined_workouts = self.workout!.joined_workouts
-    self.childTableController?.tableView.reloadData()
+  
   }
 
   // Function to display the correct type of workout action button depending on status
