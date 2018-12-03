@@ -17,16 +17,6 @@ class Workout: NSObject {
   
   // Mark: - General
   
-  //    TODO: Merge this into an init function
-  func setup(title: String, time: String, duration: Int, location: String, teamSize: Int, user_id: Int) {
-    self.title = title
-    self.time = time
-    self.duration = duration
-    self.location = location
-    self.teamSize = teamSize
-    self.user_id = user_id
-  }
-  
   init(title: String?, time: String?, duration: Int?, location: String?, teamSize: Int?, user_id: Int?){
     super.init()
     self.title = title
@@ -38,7 +28,11 @@ class Workout: NSObject {
   }
   
   func valid() -> Bool {
-    
-    return false
+    if self.title == nil || self.time == nil || self.duration == nil || self.location == nil || self.teamSize == nil || user_id == nil {
+      return false
+    }
+    else {
+      return true
+    }
   }
 }
