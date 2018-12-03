@@ -6,58 +6,58 @@
 import UIKit
 
 class JoinedWorkoutTableViewController: UITableViewController {
-    // Saving both workout title and id
-    var joinedWorkouts = [(username: String, status: Int, id: Int)]()
+  // Mark: - Properties
+  var joined_workouts: [JoinedWorkout]?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+  override func viewDidLoad() {
+      super.viewDidLoad()
+      self.tableView.delegate = self
+      self.tableView.dataSource = self
+    
+      // Uncomment the following line to preserve selection between presentations
+      // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+      // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+      // self.navigationItem.rightBarButtonItem = self.editButtonItem
+  }
+
+  override func didReceiveMemoryWarning() {
+      super.didReceiveMemoryWarning()
+      // Dispose of any resources that can be recreated.
+  }
+
+  // MARK: - Table view data source
+
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return joined_workouts!.count
+  }
+
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    // Prepare cell and necessary info
+    let cell = tableView.dequeueReusableCell(withIdentifier: "joinedWorkout", for: indexPath) as! JoinedWorkoutTableViewCell
+    let joinedWorkout = joined_workouts![indexPath.row]
+    
+    // Setting cell info
+    cell.name?.text = joinedWorkout.full_name!
+    cell.user_id = joinedWorkout.user_id!
+    cell.parentTableController? = self
+
+    // Not showing accept / decline button for accepted users
+    if joinedWorkout.accepted! {
+        cell.acceptButton.isHidden = true
+        cell.declineButton.isHidden = true
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
-    // MARK: - Table view data source
+    return cell
+  }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return joinedWorkouts.count
-    }
+  // MARK: - Navigation
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "joinedWorkout", for: indexPath) as! JoinedWorkoutTableViewCell
-        let joinedWorkout = joinedWorkouts[indexPath.row]
-        
-        print(joinedWorkout)
-        
-        cell.name?.text = joinedWorkout.username
-        cell.user_id = joinedWorkout.id
-        cell.parentTableController? = self
-        
-        // Not showing accept / decline button for accepted users
-        if joinedWorkout.status == 1 {
-            cell.acceptButton.isHidden = true
-            cell.declineButton.isHidden = true
-        }
-        
-        
-        return cell
-    }
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
+  // In a storyboard-based application, you will often want to do a little preparation before navigation
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      // Get the new view controller using segue.destinationViewController.
+      // Pass the selected object to the new view controller.
+  }
 
 }
