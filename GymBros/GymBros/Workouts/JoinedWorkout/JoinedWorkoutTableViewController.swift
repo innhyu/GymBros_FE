@@ -40,8 +40,18 @@ class JoinedWorkoutTableViewController: UITableViewController {
     
     // Setting cell info
     cell.name?.text = joinedWorkout.full_name!
+    if joinedWorkout.is_owner! {
+      cell.identity.text = "Owner"
+    }
+    else if joinedWorkout.accepted! {
+      cell.identity.text = "Member"
+    }
+    else {
+      cell.identity.text = "Pending"
+    }
     cell.user_id = joinedWorkout.user_id!
     cell.parentTableController? = self
+    
 
     // Not showing accept / decline button for accepted users
     if (joinedWorkout.accepted)! {
