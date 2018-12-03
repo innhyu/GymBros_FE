@@ -9,7 +9,6 @@ import SwiftyJSON
 
 class WorkoutShowViewController: UIViewController {
   
-  @IBOutlet var ownerName: UILabel!
   @IBOutlet var time: UILabel!
   @IBOutlet var location: UILabel!
   @IBOutlet var type: UILabel!
@@ -95,7 +94,6 @@ class WorkoutShowViewController: UIViewController {
     self.time.text = self.workout!.time!
     self.location.text = self.workout!.location!
     self.size.text = String(self.workout!.teamSize!)
-    self.ownerName.text = self.workout!.owner_name!
   
   }
 
