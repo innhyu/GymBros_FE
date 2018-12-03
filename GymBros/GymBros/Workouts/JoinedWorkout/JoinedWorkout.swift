@@ -13,7 +13,7 @@ class JoinedWorkout {
   var full_name: String?
   var accepted: Bool?
   var approved: Bool?
-  var is_owner: Bool
+  var is_owner: Bool?
   
   //MARK: - Initialization
   init(swiftyjsonArray: JSON){
