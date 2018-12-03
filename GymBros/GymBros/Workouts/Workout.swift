@@ -84,6 +84,16 @@ class Workout: NSObject {
     return false
   }
   
+  // Function to check if the current user has been accepted into the workout
+  func hasBeenAccepted(user_id: Int) -> Bool {
+    for joined_workout in self.joined_workouts {
+      if user_id == joined_workout.user_id! {
+        return joined_workout.accepted!
+      }
+    }
+    return false
+  }
+  
   // Function to check if user_id is an owner of workout
   func isOwner(user_id: Int) -> Bool {
     return user_id == self.owner_id!

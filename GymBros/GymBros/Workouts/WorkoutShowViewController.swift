@@ -104,7 +104,13 @@ class WorkoutShowViewController: UIViewController {
       }
       else {
           if self.workout!.hasJoined(user_id: self.request.user_id!) {
+            if self.workout!.hasBeenAccepted(user_id: self.request.user_id!){
               self.workoutActionButton.setTitle("Accept", for: .normal)
+            }
+            else {
+              self.workoutActionButton.setTitle("Pending", for: .normal)
+              self.workoutActionButton.isEnabled = false
+            }
           }
           else {
               self.workoutActionButton.setTitle("Join", for: .normal)
