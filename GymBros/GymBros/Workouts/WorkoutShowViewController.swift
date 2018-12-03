@@ -10,7 +10,6 @@ import SwiftyJSON
 class WorkoutShowViewController: UIViewController {
   
     @IBOutlet var ownerName: UILabel!
-    @IBOutlet var name: UILabel!
     @IBOutlet var time: UILabel!
     @IBOutlet var location: UILabel!
     @IBOutlet var type: UILabel!
@@ -40,7 +39,6 @@ class WorkoutShowViewController: UIViewController {
                 print("JSON: \(json)") // serialized json response
                 let swiftyjson = JSON(json)
                 print(self.navigationItem.title)
-                self.name.text = swiftyjson["workout"]["title"].string
                 self.navigationItem.title = swiftyjson["workout"]["title"].string!
                 
                 print(self.navigationItem.title)
