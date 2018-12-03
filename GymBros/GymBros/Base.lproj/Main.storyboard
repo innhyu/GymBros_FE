@@ -199,6 +199,7 @@
                     <connections>
                         <outlet property="age" destination="Tjz-D1-l5Z" id="hwx-ab-nkD"/>
                         <outlet property="gender" destination="Qq7-7f-cHc" id="ZIm-Ng-6cB"/>
+                        <outlet property="logoutButton" destination="pgg-OK-Zrl" id="NFp-Lj-sip"/>
                         <outlet property="name" destination="bwb-AR-YAf" id="46o-nP-DUo"/>
                     </connections>
                 </tableViewController>
