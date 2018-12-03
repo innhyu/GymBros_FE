@@ -120,10 +120,13 @@ class WorkoutShowViewController: UIViewController {
   
   // Preparation for the table view cell
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      // Making reference to childTableController
-      if let destination = segue.destination as? JoinedWorkoutTableViewController {
-          self.childTableController = destination
-      }
+    // Making reference to childTableController
+    if let joinedWorkoutTVC = segue.destination as? JoinedWorkoutTableViewController {
+      self.childTableController = joinedWorkoutTVC
+    }
+    else if let workoutEditVC = segue.destination as? WorkoutEditViewController {
+      workoutEditVC.workout = self.workout!
+    }
   }
 
 }

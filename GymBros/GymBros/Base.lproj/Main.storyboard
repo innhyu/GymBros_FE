@@ -534,7 +534,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="12" maxY="11"/>
                                 <state key="normal" title="Edit" image="Edit"/>
                                 <connections>
-                                    <segue destination="fmW-E4-3mx" kind="show" id="X4T-7O-gJd"/>
+                                    <segue destination="fmW-E4-3mx" kind="show" identifier="editWorkout" id="X4T-7O-gJd"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHv-EG-wgT">
@@ -984,6 +984,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ISo-p4-gNq"/>
-        <segue reference="1Vq-1R-1x0"/>
+        <segue reference="q2w-iC-QJv"/>
     </inferredMetricsTieBreakers>
 </document>
