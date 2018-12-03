@@ -24,10 +24,7 @@ class WorkoutShowViewController: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         request.loadUser()
-        
-        let formatter = DateFormatter()
         
         Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(workout_id!)/\(request.user_id!)").responseJSON { response in
             print("Request: \(String(describing: response.request))")   // original url request
@@ -38,20 +35,9 @@ class WorkoutShowViewController: UIViewController {
             
                 print("JSON: \(json)") // serialized json response
                 let swiftyjson = JSON(json)
-                print(self.navigationItem.title)
-                self.navigationItem.title = swiftyjson["workout"]["title"].string!
                 
-                print(self.navigationItem.title)
-                // Turning API date string into Date object
-                formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
-                let date = formatter.date(from: swiftyjson["workout"]["time"].string!)
-                // Formatting date appropriately
-                formatter.dateFormat = "MMM dd, HH:mm"
-                self.time.text = formatter.string(from: date!)
-            
-                self.location.text = swiftyjson["workout"]["location"].string
-                //        self.type.text = swiftyjson["workout"]["location"].string // There is no workout type yet;
-                self.size.text = String(swiftyjson["workout"]["team_size"].int!)
+                // Parse and set swiftyjson
+                self.parseAndSetWorkout(swiftyjson: swiftyjson)
                 
                 // Owner parsing section
                 self.owner_id = swiftyjson["owner"]["id"].int!
@@ -69,6 +55,10 @@ class WorkoutShowViewController: UIViewController {
                     self.joinedWorkouts.append((name, status, joinedWorkout_id))
                 }
                 
+                // Display correct title for button
+                self.setButton(swiftyjson: swiftyjson)
+                
+                // Sending correcrt data for JoinedWorkouts
                 self.childTableController?.joinedWorkouts = self.joinedWorkouts
                 self.childTableController?.tableView.reloadData()
             }
@@ -110,6 +100,21 @@ class WorkoutShowViewController: UIViewController {
         default:
             break;
         }
+    }
+    
+    // Function to parse workout information and set information accordingly
+    func parseAndSetWorkout(swiftyjson: JSON){
+        let formatter = DateFormatter()
+        
+        self.navigationItem.title = swiftyjson["workout"]["title"].string!
+        // Turning API date string into Date object
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
+        let date = formatter.date(from: swiftyjson["workout"]["time"].string!)
+        // Formatting date appropriately
+        formatter.dateFormat = "MMM dd, HH:mm"
+        self.time.text = formatter.string(from: date!)
+        self.location.text = swiftyjson["workout"]["location"].string!
+        self.size.text = String(swiftyjson["workout"]["team_size"].int!)
     }
     
     // Function to display the correct type of workout action button depending on status
