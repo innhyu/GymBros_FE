@@ -9,7 +9,7 @@ import SwiftyJSON
 
 class ProfileViewController: UITableViewController {
   // Mark: - Properties
-  let user_id: Int?
+  var user_id: Int?
   let request = Request()
   
   @IBOutlet weak var name: UILabel!

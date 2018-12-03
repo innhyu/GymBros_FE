@@ -11,6 +11,7 @@
 		2AE4B7A621B4EA6C00FE4DC2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE4B7A521B4EA6C00FE4DC2 /* User.swift */; };
 		2AEB898E2195553100D57AEC /* WorkoutShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEB898D2195553100D57AEC /* WorkoutShowViewController.swift */; };
 		B709528821B520DF006B13EB /* JoinedWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B709528721B520DF006B13EB /* JoinedWorkout.swift */; };
+		B709528A21B5D06C006B13EB /* WorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B709528921B5D06C006B13EB /* WorkoutsViewController.swift */; };
 		B721F7792150563D00306F1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721F7782150563D00306F1F /* AppDelegate.swift */; };
 		B721F77B2150563D00306F1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B721F77A2150563D00306F1F /* ViewController.swift */; };
 		B721F77E2150563D00306F1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B721F77C2150563D00306F1F /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		2AEB898D2195553100D57AEC /* WorkoutShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutShowViewController.swift; sourceTree = "<group>"; };
 		9B05BF6400C4A1A704DA551F /* Pods-GymBros.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GymBros.release.xcconfig"; path = "Pods/Target Support Files/Pods-GymBros/Pods-GymBros.release.xcconfig"; sourceTree = "<group>"; };
 		B709528721B520DF006B13EB /* JoinedWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedWorkout.swift; sourceTree = "<group>"; };
+		B709528921B5D06C006B13EB /* WorkoutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsViewController.swift; sourceTree = "<group>"; };
 		B721F7752150563D00306F1F /* GymBros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymBros.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B721F7782150563D00306F1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B721F77A2150563D00306F1F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				B7ED5A7B219DFB66007FEAFD /* WorkoutEditViewController.swift */,
 				B7AA556621AC8E1200598192 /* WorkoutTableViewCell.swift */,
 				2AE4B7A321B4E66700FE4DC2 /* Workout.swift */,
+				B709528921B5D06C006B13EB /* WorkoutsViewController.swift */,
 			);
 			path = Workouts;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				B7AA556921AC94BD00598192 /* JoinedWorkoutTableViewCell.swift in Sources */,
 				2AEB898E2195553100D57AEC /* WorkoutShowViewController.swift in Sources */,
 				B7ED5A7F219E00ED007FEAFD /* Request.swift in Sources */,
+				B709528A21B5D06C006B13EB /* WorkoutsViewController.swift in Sources */,
 				2AE4B7A421B4E66700FE4DC2 /* Workout.swift in Sources */,
 				B7A8CC9321A534F600AC984D /* JoinedWorkoutTableViewController.swift in Sources */,
 				B721F77B2150563D00306F1F /* ViewController.swift in Sources */,

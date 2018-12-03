@@ -210,7 +210,7 @@
         <!--Workouts Index-->
         <scene sceneID="1GF-yu-Zqy">
             <objects>
-                <viewController title="Workouts Index" id="7AH-Zm-RTT" customClass="WorkoutsController" customModule="GymBros" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Workouts Index" id="7AH-Zm-RTT" customClass="WorkoutsViewController" customModule="GymBros" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Duw-hX-r9H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -256,7 +256,7 @@
                                 <inset key="imageEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="13"/>
                                 <state key="normal" title="Profile" image="Profile"/>
                                 <connections>
-                                    <segue destination="EKE-6E-sDn" kind="show" id="AMW-E3-9fb"/>
+                                    <segue destination="EKE-6E-sDn" kind="show" identifier="showMyProfile" id="AMW-E3-9fb"/>
                                 </connections>
                             </button>
                         </subviews>
