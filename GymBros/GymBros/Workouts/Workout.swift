@@ -33,7 +33,6 @@ class Workout: NSObject {
   // Function to parse workout information and set information accordingly
   func parseWorkout(swiftyjson: JSON){
     if swiftyjson["workout"] != JSON.null {
-    
       // Setting basic information
       self.id = swiftyjson["workout"]["id"].int!
       self.title = swiftyjson["workout"]["title"].string!
@@ -49,7 +48,6 @@ class Workout: NSObject {
       // Formatting date appropriately
       formatter.dateFormat = "MMM dd, HH:mm"
       self.time = formatter.string(from: date!)
-      
     }
   }
   
