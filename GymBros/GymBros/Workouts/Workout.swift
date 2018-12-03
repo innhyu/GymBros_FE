@@ -9,6 +9,7 @@ import SwiftyJSON
 class Workout: NSObject {
   
   // MARK: - Properties
+  var id: Int?
   var title: String?
   var time: String?
   var duration: Int?
@@ -33,6 +34,7 @@ class Workout: NSObject {
   // Function to parse workout information and set information accordingly
   func parseWorkout(swiftyjson: JSON){
     // Setting basic information
+    self.id = swiftyjson["workout"]["id"].int!
     self.title = swiftyjson["workout"]["title"].string!
     self.duration = swiftyjson["workout"]["duration"].int!
     self.location = swiftyjson["workout"]["location"].string!
@@ -66,6 +68,21 @@ class Workout: NSObject {
       self.joined_workouts?.append(joinedWorkoutObject)
     }
     
+  }
+  
+  // Function to check if from the returned json data that the current user is in the workout
+  func hasJoined(user_id: Int) -> Bool {
+    for joined_workout in self.joined_workouts! {
+      if user_id == joined_workout.user_id! {
+        return true
+      }
+    }
+    return false
+  }
+  
+  // Function to check if user_id is an owner of workout
+  func isOwner(user_id: Int) -> Bool {
+    return user_id == self.owner_id!
   }
   
 }
