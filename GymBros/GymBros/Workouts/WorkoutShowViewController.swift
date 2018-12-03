@@ -39,7 +39,11 @@ class WorkoutShowViewController: UIViewController {
             
                 print("JSON: \(json)") // serialized json response
                 let swiftyjson = JSON(json)
+                print(self.navigationItem.title)
                 self.name.text = swiftyjson["workout"]["title"].string
+                self.navigationItem.title = swiftyjson["workout"]["title"].string!
+                
+                print(self.navigationItem.title)
                 // Turning API date string into Date object
                 formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
                 let date = formatter.date(from: swiftyjson["workout"]["time"].string!)
@@ -55,18 +59,6 @@ class WorkoutShowViewController: UIViewController {
                 self.owner_id = swiftyjson["owner"]["id"].int!
                 let fullOwnerName = "\(swiftyjson["owner"]["first_name"].string!) \(swiftyjson["owner"]["last_name"].string!)"
                 self.ownerName.text = fullOwnerName
-                
-                if self.isOwner(jsondata: swiftyjson, user_id: self.request.user_id!) {
-                    self.workoutActionButton.setTitle("Finalize", for: .normal)
-                }
-                else {
-                    if self.hasJoined(jsondata: swiftyjson, user_id: self.request.user_id!) {
-                        self.workoutActionButton.setTitle("Accept", for: .normal)
-                    }
-                    else {
-                        self.workoutActionButton.setTitle("Join", for: .normal)
-                    }
-                }
                 
                 // JoinedWorkout parsing section
                 let allJoinedWorkouts = swiftyjson["joined_workouts"].array!
@@ -119,6 +111,21 @@ class WorkoutShowViewController: UIViewController {
             break;
         default:
             break;
+        }
+    }
+    
+    // Function to display the correct type of workout action button depending on status
+    func setButton(swiftyjson: JSON) {
+        if self.isOwner(jsondata: swiftyjson, user_id: self.request.user_id!) {
+            self.workoutActionButton.setTitle("Finalize", for: .normal)
+        }
+        else {
+            if self.hasJoined(jsondata: swiftyjson, user_id: self.request.user_id!) {
+                self.workoutActionButton.setTitle("Accept", for: .normal)
+            }
+            else {
+                self.workoutActionButton.setTitle("Join", for: .normal)
+            }
         }
     }
     
