@@ -68,6 +68,7 @@ class Workout: NSObject {
       let allJoinedWorkouts = swiftyjson["joined_workouts"].array!
       allJoinedWorkouts.forEach { joinedWorkout in
         let joinedWorkoutObject = JoinedWorkout(swiftyjsonArray: joinedWorkout)
+        joinedWorkoutObject.is_owner = self.isOwner(user_id: joinedWorkoutObject.user_id!)
         self.joined_workouts.append(joinedWorkoutObject)
       }
     }
