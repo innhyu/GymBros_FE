@@ -25,8 +25,6 @@ class WorkoutShowViewController: UIViewController {
     super.viewDidLoad()
     request.loadUser()
     
-    print("HELLO")
-    
     Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(workout_id!)/\(request.user_id!)").responseJSON { response in
           print("Request: \(String(describing: response.request))")   // original url request
           print("Response: \(String(describing: response.response))") // http url response
@@ -43,10 +41,6 @@ class WorkoutShowViewController: UIViewController {
             // Setting appropriate labels
             self.setLabels()
             self.setButton()
-          
-            print("Checking Here")
-            print(self.workout!)
-            print(self.workout!.joined_workouts)
             
             // Sending correcrt data for JoinedWorkouts
             self.childTableController?.joined_workouts = self.workout!.joined_workouts

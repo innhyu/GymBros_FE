@@ -69,7 +69,6 @@ class WorkoutsTableViewController: UITableViewController {
     }
   
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      print(indexPath)
       performSegue(withIdentifier: "toShowPage", sender: indexPath)
     }
   
