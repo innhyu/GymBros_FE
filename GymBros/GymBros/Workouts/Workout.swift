@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Workout: NSObject {
   
@@ -13,26 +14,58 @@ class Workout: NSObject {
   var duration: Int?
   var location: String?
   var teamSize: Int?
-  var user_id: Int?
+  var owner_id: Int?
+  var owner_name: String?
+  var joined_workouts: [JoinedWorkout]?
   
   // Mark: - General
   
-  init(title: String?, time: String?, duration: Int?, location: String?, teamSize: Int?, user_id: Int?){
+  init(swiftyjson: JSON){
+
+    // Parse the json for each necessary parts
+    self.parseWorkout(swiftyjson: swiftyjson)
+    self.parseOwner(swiftyjson: swiftyjson)
+    self.parseJoinedWorkouts(swiftyjson: swiftyjson)
+    
     super.init()
-    self.title = title
-    self.time = time
-    self.duration = duration
-    self.location = location
-    self.teamSize = teamSize
-    self.user_id = user_id
   }
   
-  func valid() -> Bool {
-    if self.title == nil || self.time == nil || self.duration == nil || self.location == nil || self.teamSize == nil || user_id == nil {
-      return false
-    }
-    else {
-      return true
-    }
+  // Function to parse workout information and set information accordingly
+  func parseWorkout(swiftyjson: JSON){
+    // Setting basic information
+    self.title = swiftyjson["workout"]["title"].string!
+    self.duration = swiftyjson["workout"]["duration"].int!
+    self.location = swiftyjson["workout"]["location"].string!
+    self.teamSize = swiftyjson["workout"]["team_size"].int!
+    
+    // Setting time
+    let formatter = DateFormatter()
+    // Turning API date string into Date object
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
+    let date = formatter.date(from: swiftyjson["workout"]["time"].string!)
+    // Formatting date appropriately
+    formatter.dateFormat = "MMM dd, HH:mm"
+    self.time = formatter.string(from: date!)
+    
   }
+  
+  // Function to parse owner information and set information accordingly
+  func parseOwner(swiftyjson: JSON){
+    // Setting owner information
+    self.owner_id = swiftyjson["owner"]["id"].int!
+    let fullOwnerName = "\(swiftyjson["owner"]["first_name"].string!) \(swiftyjson["owner"]["last_name"].string!)"
+    self.owner_name = fullOwnerName
+  }
+  
+  // Function parse joinedWorkouts and
+  func parseJoinedWorkouts(swiftyjson: JSON){
+    // Parsing joinedWorkouts
+    let allJoinedWorkouts = swiftyjson["joined_workouts"].array!
+    allJoinedWorkouts.forEach { joinedWorkout in
+      let joinedWorkoutObject = JoinedWorkout(swiftyjsonArray: joinedWorkout)
+      self.joined_workouts?.append(joinedWorkoutObject)
+    }
+    
+  }
+  
 }
