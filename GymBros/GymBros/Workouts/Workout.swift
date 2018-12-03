@@ -32,41 +32,47 @@ class Workout: NSObject {
   
   // Function to parse workout information and set information accordingly
   func parseWorkout(swiftyjson: JSON){
-    // Setting basic information
-    self.id = swiftyjson["workout"]["id"].int!
-    self.title = swiftyjson["workout"]["title"].string!
-    self.duration = swiftyjson["workout"]["duration"].int!
-    self.location = swiftyjson["workout"]["location"].string!
-    self.teamSize = swiftyjson["workout"]["team_size"].int!
+    if swiftyjson["workout"] != JSON.null {
     
-    // Setting time
-    let formatter = DateFormatter()
-    // Turning API date string into Date object
-    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
-    let date = formatter.date(from: swiftyjson["workout"]["time"].string!)
-    // Formatting date appropriately
-    formatter.dateFormat = "MMM dd, HH:mm"
-    self.time = formatter.string(from: date!)
-    
+      // Setting basic information
+      self.id = swiftyjson["workout"]["id"].int!
+      self.title = swiftyjson["workout"]["title"].string!
+      self.duration = swiftyjson["workout"]["duration"].int!
+      self.location = swiftyjson["workout"]["location"].string!
+      self.teamSize = swiftyjson["workout"]["team_size"].int!
+      
+      // Setting time
+      let formatter = DateFormatter()
+      // Turning API date string into Date object
+      formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sssZ"
+      let date = formatter.date(from: swiftyjson["workout"]["time"].string!)
+      // Formatting date appropriately
+      formatter.dateFormat = "MMM dd, HH:mm"
+      self.time = formatter.string(from: date!)
+      
+    }
   }
   
   // Function to parse owner information and set information accordingly
   func parseOwner(swiftyjson: JSON){
-    // Setting owner information
-    self.owner_id = swiftyjson["owner"]["id"].int!
-    let fullOwnerName = "\(swiftyjson["owner"]["first_name"].string!) \(swiftyjson["owner"]["last_name"].string!)"
-    self.owner_name = fullOwnerName
+    if swiftyjson["owner"] != JSON.null {
+      // Setting owner information
+      self.owner_id = swiftyjson["owner"]["id"].int!
+      let fullOwnerName = "\(swiftyjson["owner"]["first_name"].string!) \(swiftyjson["owner"]["last_name"].string!)"
+      self.owner_name = fullOwnerName
+    }
   }
   
   // Function parse joinedWorkouts and
   func parseJoinedWorkouts(swiftyjson: JSON){
-    // Parsing joinedWorkouts
-    let allJoinedWorkouts = swiftyjson["joined_workouts"].array!
-    allJoinedWorkouts.forEach { joinedWorkout in
-      let joinedWorkoutObject = JoinedWorkout(swiftyjsonArray: joinedWorkout)
-      self.joined_workouts.append(joinedWorkoutObject)
+    if swiftyjson["joined_workouts"] != JSON.null {
+      // Parsing joinedWorkouts
+      let allJoinedWorkouts = swiftyjson["joined_workouts"].array!
+      allJoinedWorkouts.forEach { joinedWorkout in
+        let joinedWorkoutObject = JoinedWorkout(swiftyjsonArray: joinedWorkout)
+        self.joined_workouts.append(joinedWorkoutObject)
+      }
     }
-    
   }
   
   // Function to check if from the returned json data that the current user is in the workout
