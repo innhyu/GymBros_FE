@@ -19,7 +19,6 @@ class WorkoutCreateViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBOutlet weak var workoutTime: UITextField!
     @IBOutlet weak var workoutDuration: UITextField!
     @IBOutlet weak var workoutLocation: UITextField!
-    @IBOutlet weak var workoutType: UITextField!
     @IBOutlet weak var teamSize: UITextField!
 
   override func viewDidLoad() {
