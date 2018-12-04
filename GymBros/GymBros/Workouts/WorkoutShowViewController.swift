@@ -47,9 +47,10 @@ class WorkoutShowViewController: UIViewController {
               print("Result: \(response.result)")                         // response serialization result
               
               if let json = response.result.value {
-                  print("JSON: \(json)") // serialized json response
-                  let swiftyjson = JSON(json)
-                  self.workoutActionButton.setTitle("Accept", for: .normal)
+                print("JSON: \(json)") // serialized json response
+                let swiftyjson = JSON(json)
+                self.workoutActionButton.setTitle("Accept", for: .normal)
+                self.alamoRequest();
               }
           };
           break;
