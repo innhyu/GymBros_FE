@@ -22,31 +22,8 @@ class WorkoutShowViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     request.loadUser()
-    
-    Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(workout_id!)/\(request.user_id!)").responseJSON { response in
-          print("Request: \(String(describing: response.request))")   // original url request
-          print("Response: \(String(describing: response.response))") // http url response
-          print("Result: \(response.result)")                         // response serialization result
-        
-          if let json = response.result.value {
-        
-            print("JSON: \(json)") // serialized json response
-            let swiftyjson = JSON(json)
-          
-            // Create a workout instance
-            self.workout = Workout(swiftyjson: swiftyjson)
-  
-            // Setting appropriate labels
-            self.setLabels()
-            self.setButton()
-            
-            // Sending correcrt data for JoinedWorkouts
-            self.childTableController?.workout = self.workout!
-            self.childTableController?.tableView.reloadData()
-
-          }
-      };
-    
+    self.alamoRequest();
+    Timer.scheduledTimer(timeInterval: 5, target: self,selector: #selector(WorkoutShowViewController.alamoRequest), userInfo: nil, repeats: true)
   }
   
   
@@ -83,6 +60,33 @@ class WorkoutShowViewController: UIViewController {
       default:
           break;
       }
+  }
+  
+  // Function to fetch the workout information from the API
+  @objc func alamoRequest() {
+    Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(self.workout_id!)/\(self.request.user_id!)").responseJSON { response in
+      print("Request: \(String(describing: response.request))")   // original url request
+      print("Response: \(String(describing: response.response))") // http url response
+      print("Result: \(response.result)")                         // response serialization result
+      
+      if let json = response.result.value {
+        
+        print("JSON: \(json)") // serialized json response
+        let swiftyjson = JSON(json)
+        
+        // Create a workout instance
+        self.workout = Workout(swiftyjson: swiftyjson)
+        
+        // Setting appropriate labels
+        self.setLabels()
+        self.setButton()
+        
+        // Sending correcrt data for JoinedWorkouts
+        self.childTableController?.workout = self.workout!
+        self.childTableController?.tableView.reloadData()
+        
+      }
+    };
   }
   
   // Function to set appropriate labels and propagate joinedWorkouts
