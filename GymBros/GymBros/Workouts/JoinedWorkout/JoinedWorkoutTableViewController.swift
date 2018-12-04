@@ -61,6 +61,13 @@ class JoinedWorkoutTableViewController: UITableViewController {
       cell.parentTableController? = self
       cell.id = joinedWorkout.id!
       
+
+      // Not showing accept / decline button unless user is an owner
+      if !(workout.isOwner(user_id: request.user_id!)){
+        cell.acceptButton.isHidden = true
+        cell.declineButton.isHidden = true
+      }
+
     }
     
     return cell
