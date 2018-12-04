@@ -62,6 +62,7 @@ class JoinedWorkoutTableViewController: UITableViewController {
       }
       cell.user_id = joinedWorkout.user_id!
       cell.parentTableController? = self
+      cell.id = joinedWorkout.id!
       
 
       // Not showing accept / decline button for accepted users

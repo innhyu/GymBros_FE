@@ -15,6 +15,7 @@ class JoinedWorkoutTableViewCell: UITableViewCell {
   @IBOutlet weak var declineButton: UIButton!
     
   var user_id: Int?
+  var id: Int?
   var parentTableController: JoinedWorkoutTableViewController?
     
   override func awakeFromNib() {
@@ -30,8 +31,8 @@ class JoinedWorkoutTableViewCell: UITableViewCell {
     
     @IBAction func acceptUser(){
         
-        Alamofire.request("https://cryptic-temple-10365.herokuapp.com/joined_workouts/\(user_id!)/accept", method: .patch)
-            .validate(statusCode: 200..<300)
+        Alamofire.request("https://cryptic-temple-10365.herokuapp.com/joined_workouts/\(id!)/accept", method: .patch)
+//            .validate(statusCode: 200..<300)
             .responseJSON { response in
             print("Request: \(String(describing: response.request))")   // original url request
             print("Response: \(String(describing: response.response))") // http url response
