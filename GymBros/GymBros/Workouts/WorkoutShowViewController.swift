@@ -13,6 +13,7 @@ class WorkoutShowViewController: UIViewController {
   @IBOutlet var location: UILabel!
   @IBOutlet var size: UILabel!
   @IBOutlet var workoutActionButton: UIButton!
+  @IBOutlet var workoutEditButton: UIButton!
 
   var workout_id: Int?
   var workout: Workout?
@@ -105,21 +106,22 @@ class WorkoutShowViewController: UIViewController {
   // Function to display the correct type of workout action button depending on status
   func setButton() {
       if self.workout!.isOwner(user_id: self.request.user_id!) {
-          self.workoutActionButton.setTitle("Finalize", for: .normal)
+        self.workoutActionButton.setTitle("Finalize", for: .normal)
       }
       else {
-          if self.workout!.hasJoined(user_id: self.request.user_id!) {
-            if self.workout!.hasBeenAccepted(user_id: self.request.user_id!){
-              self.workoutActionButton.setTitle("Accept", for: .normal)
-            }
-            else {
-              self.workoutActionButton.setTitle("Pending", for: .normal)
-              self.workoutActionButton.isEnabled = false
-            }
+        if self.workout!.hasJoined(user_id: self.request.user_id!) {
+          if self.workout!.hasBeenAccepted(user_id: self.request.user_id!){
+            self.workoutActionButton.setTitle("Accept", for: .normal)
           }
           else {
-              self.workoutActionButton.setTitle("Join", for: .normal)
+            self.workoutActionButton.setTitle("Pending", for: .normal)
+            self.workoutActionButton.isEnabled = false
           }
+        }
+        else {
+            self.workoutActionButton.setTitle("Join", for: .normal)
+        }
+        self.workoutEditButton.isEnabled = false;
       }
   }
   
