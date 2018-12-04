@@ -11,7 +11,6 @@ class WorkoutShowViewController: UIViewController {
   
   @IBOutlet var time: UILabel!
   @IBOutlet var location: UILabel!
-  @IBOutlet var type: UILabel!
   @IBOutlet var size: UILabel!
   @IBOutlet var workoutActionButton: UIButton!
 
