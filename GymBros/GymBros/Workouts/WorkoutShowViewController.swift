@@ -107,11 +107,13 @@ class WorkoutShowViewController: UIViewController {
   func setButton() {
       if self.workout!.isOwner(user_id: self.request.user_id!) {
         self.workoutActionButton.setTitle("Finalize", for: .normal)
+        self.workoutActionButton.isEnabled = true
       }
       else {
         if self.workout!.hasJoined(user_id: self.request.user_id!) {
           if self.workout!.hasBeenAccepted(user_id: self.request.user_id!){
             self.workoutActionButton.setTitle("Accept", for: .normal)
+            self.workoutActionButton.isEnabled = true
           }
           else {
             self.workoutActionButton.setTitle("Pending", for: .normal)
@@ -120,6 +122,7 @@ class WorkoutShowViewController: UIViewController {
         }
         else {
             self.workoutActionButton.setTitle("Join", for: .normal)
+            self.workoutActionButton.isEnabled = true
         }
         self.workoutEditButton.isEnabled = false;
       }

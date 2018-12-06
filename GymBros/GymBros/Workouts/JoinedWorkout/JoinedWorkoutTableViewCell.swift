@@ -48,29 +48,29 @@ class JoinedWorkoutTableViewCell: UITableViewCell {
         }
     }
     
-//    @IBAction func declineUser(){
-//
-//        Alamofire.request("https://cryptic-temple-10365.herokuapp.com/joined_workouts/\(user_id!)", method: .delete)
-//            .validate(statusCode: 200..<300)
-//            .responseJSON { response in
-//                print("Request: \(String(describing: response.request))")   // original url request
-//                print("Response: \(String(describing: response.response))") // http url response
-//                print("Result: \(response.result)")                         // response serialization result
-//                
-//                if let json = response.result.value {
-//
-//                    print("JSON: \(json)") // serialized json response
-//                    let swiftyjson = JSON(json)
-//
-//                    if let tableController = self.parentTableController? {
-//                        if let myTableView = tableController.tableView {
-//                            let indexPath = myTableView.indexPath(for: self)
-//                            tableController.joinedWorkouts.remove
-//                        }
-//                    }
-//                }
-//        }
-//    }
+    @IBAction func declineUser(){
+
+        Alamofire.request("https://cryptic-temple-10365.herokuapp.com/joined_workouts/\(id!)", method: .delete)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                print("Request: \(String(describing: response.request))")   // original url request
+                print("Response: \(String(describing: response.response))") // http url response
+                print("Result: \(response.result)")                         // response serialization result
+              
+                if let json = response.result.value {
+
+                    print("JSON: \(json)") // serialized json response
+                    let swiftyjson = JSON(json)
+
+                    // Reloading data from the actual view request.. quickest way for now.
+                    if let tableController = self.parentTableController {
+                      if let workoutShowVC = tableController.parent as? WorkoutShowViewController {
+                        workoutShowVC.alamoRequest();
+                      }
+                    }
+                }
+        }
+    }
   
   // Change user status to owner
   func setOwner() {

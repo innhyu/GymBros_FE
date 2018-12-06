@@ -648,6 +648,9 @@
                                             <color key="backgroundColor" red="0.84313725490196079" green="0.19261088570869456" blue="0.41401317515882491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" title="Decline"/>
+                                            <connections>
+                                                <action selector="declineUser" destination="2L0-nh-Uxn" eventType="touchUpInside" id="tE4-29-APs"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5I-xA-eGV">
                                             <rect key="frame" x="75" y="17" width="136" height="21"/>
