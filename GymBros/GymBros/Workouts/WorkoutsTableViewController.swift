@@ -16,10 +16,11 @@ class WorkoutsTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
+        self.request.loadUser()
+      
         // Do any additional setup after loading the view, typically from a nib.
         // Fetch all workouts from the API
-        Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts").responseJSON { response in
+        Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(request.user_id!)").responseJSON { response in
             print("Request: \(String(describing: response.request))")   // original url request
             print("Response: \(String(describing: response.response))") // http url response
             print("Result: \(response.result)")                         // response serialization result
