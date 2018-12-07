@@ -164,6 +164,9 @@ class WorkoutShowViewController: UIViewController {
     else if let workoutEditVC = segue.destination as? WorkoutEditViewController {
       workoutEditVC.workout = self.workout!
     }
+    else if let checkinVC = segue.destination as? CheckInViewController {
+      checkinVC.check_in_code = self.workout!.check_in_code!
+    }
   }
 
 }
