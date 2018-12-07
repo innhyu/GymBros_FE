@@ -4,6 +4,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class WorkoutEditViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     //Mark: - Properties
@@ -121,6 +123,56 @@ class WorkoutEditViewController: UIViewController, UIPickerViewDelegate, UIPicke
         workoutDuration.text = String(self.durations[row])
       }
     }
+  
+    @IBAction func editWorkout(_ sender: Any?) {
+      // Fetching fields from the inputs
+      let title: String? = self.workoutTitle.text;
+      let time: String? = self.workoutTime.text;
+      let duration: Int? = Int(self.workoutDuration.text!);
+      let location: String? = self.workoutLocation.text?.uppercased();
+      // Type isn't used yet
+      // let type = self.workoutType.text;
+      let teamSize: Int? = Int(self.teamSize.text!);
+      
+      // Constructing parameter needed for Alamofire Request
+      let parameters: Parameters = [
+        // TODO: Do something with user_id
+        "user_id": self.request.user_id!,
+        "title": title ?? "",
+        "time": time ?? "", // "Format is in -> 2007-12-04 00:00:00 -0000"
+        "duration": duration ?? "",
+        // Do something with location to make a dropdown
+        "location": location ?? "",
+        "team_size": teamSize ?? ""
+      ]
+      
+      // Making Alamofire request
+      Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(self.workout!.id!)", method: .patch, parameters: parameters)
+        .validate(statusCode: 200..<300)
+        .responseJSON { response in
+          print("Request: \(String(describing: response.request))")   // original url request
+          print("Response: \(String(describing: response.response))") // http url response
+          print("Result: \(response.result)")                         // response serialization result
+          
+          if let json = response.result.value {
+            
+            print("JSON: \(json)") // serialized json response
+            let swiftyjson = JSON(json);
+            
+            let success = UIAlertController(title: "Success", message: "Workout Edited. Please wait for a few seconds before the updates are reflected.", preferredStyle: UIAlertControllerStyle.alert)
+            success.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+              self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(success, animated: true, completion: nil)
+          }
+          else {
+            // Alert to show that the workout create failed to the user.
+            let fail = UIAlertController(title: "Failed", message: "Failed to update the workout. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+            fail.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(fail, animated: true, completion: nil)
+          }
+      }
+  }
   
 
     /*

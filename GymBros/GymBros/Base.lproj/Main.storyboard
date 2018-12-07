@@ -792,6 +792,9 @@
                                 <state key="normal" title="Edit Workout">
                                     <color key="titleColor" red="0.96201403370000005" green="1" blue="0.98442289640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="editWorkout:" destination="fmW-E4-3mx" eventType="touchUpInside" id="d5Y-P9-ZRk"/>
+                                </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h5D-E2-VsS">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
