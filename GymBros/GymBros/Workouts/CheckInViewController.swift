@@ -26,6 +26,7 @@ class CheckInViewController: UIViewController {
         request.loadUser();
       
         // Do any additional setup after loading the view.
+        self.navigationItem.title = "Check In"
       
         // Case Owner: Populate check-in code
         if self.joinedWorkout!.is_owner! {
