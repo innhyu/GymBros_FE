@@ -16,6 +16,8 @@ class Workout: NSObject {
   var location: String?
   var teamSize: Int?
   var owner_id: Int?
+  var check_in_code: Int?
+  var finalized: Bool?
   var owner_name: String?
   var joined_workouts = [JoinedWorkout]()
   
@@ -39,6 +41,9 @@ class Workout: NSObject {
       self.duration = swiftyjson["workout"]["duration"].int!
       self.location = swiftyjson["workout"]["location"].string!
       self.teamSize = swiftyjson["workout"]["team_size"].int!
+      self.finalized = swiftyjson["workout"]["finalized"].bool!
+      self.check_in_code = swiftyjson["workout"]["check_in_code"].int
+      self.owner_id = swiftyjson["workout"]["user_id"].int!
       
       // Setting time
       let formatter = DateFormatter()
@@ -55,7 +60,6 @@ class Workout: NSObject {
   func parseOwner(swiftyjson: JSON){
     if swiftyjson["owner"] != JSON.null {
       // Setting owner information
-      self.owner_id = swiftyjson["owner"]["id"].int!
       let fullOwnerName = "\(swiftyjson["owner"]["first_name"].string!) \(swiftyjson["owner"]["last_name"].string!)"
       self.owner_name = fullOwnerName
     }
@@ -97,6 +101,16 @@ class Workout: NSObject {
   // Function to check if user_id is an owner of workout
   func isOwner(user_id: Int) -> Bool {
     return user_id == self.owner_id!
+  }
+  
+  // Function to retrieve joined_workout for the user
+  func joinedWorkoutOf(user_id: Int) -> JoinedWorkout? {
+    for joined_workout in self.joined_workouts {
+      if user_id == joined_workout.user_id! {
+        return joined_workout
+      }
+    }
+    return nil
   }
   
 }

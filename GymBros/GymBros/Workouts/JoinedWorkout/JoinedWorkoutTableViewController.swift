@@ -49,30 +49,25 @@ class JoinedWorkoutTableViewController: UITableViewController {
       // Setting cell info
       cell.name?.text = joinedWorkout.full_name!
       if joinedWorkout.is_owner! {
-        cell.identity.text = "Owner"
-        cell.identity.backgroundColor = UIColor(red: 45/255, green: 94/255, blue: 255/255, alpha: 0.5)
+        cell.setOwner();
       }
       else if joinedWorkout.accepted! {
-        cell.identity.text = "Member"
-        cell.identity.backgroundColor = UIColor(red: 128/255, green: 232/255, blue: 38/255, alpha: 0.5)
+        cell.setMember();
       }
       else {
-        cell.identity.text = "Pending"
-        cell.identity.backgroundColor = UIColor(red: 212/255, green: 232/255, blue: 226/255, alpha: 1.0)
+        cell.setPending();
       }
       cell.user_id = joinedWorkout.user_id!
       cell.parentTableController? = self
+      cell.id = joinedWorkout.id!
       
 
-      // Not showing accept / decline button for accepted users
+      // Not showing accept / decline button unless user is an owner
       if !(workout.isOwner(user_id: request.user_id!)){
         cell.acceptButton.isHidden = true
         cell.declineButton.isHidden = true
       }
-      else if (joinedWorkout.accepted)! {
-        cell.acceptButton.isHidden = true
-        cell.declineButton.isHidden = true
-      }
+
     }
     
     return cell

@@ -162,6 +162,11 @@ class WorkoutCreateViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
   }
   
+  // Mark: - Touch Formatting
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.view.endEditing(true)
+  }
+  
   // MARK: - Navigation
 
   // In a storyboard-based application, you will often want to do a little preparation before navigation

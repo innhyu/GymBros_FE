@@ -26,6 +26,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     let genderPicker = UIPickerView()
     gender.inputView = genderPicker
     genderPicker.delegate = self
+    self.navigationItem.title = "Register"
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -111,6 +112,11 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
       }
     }
+  
+  // Mark: - Touch Formatting
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.view.endEditing(true)
+  }
 
     /*
     // MARK: - Navigation
