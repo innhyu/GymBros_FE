@@ -9,11 +9,24 @@ class WorkoutEditViewController: UIViewController {
   //Mark: - Properties
   var workout: Workout?
   
+  @IBOutlet weak var workoutTitle: UITextField!
+  @IBOutlet weak var workoutTime: UITextField!
+  @IBOutlet weak var workoutDuration: UITextField!
+  @IBOutlet weak var workoutLocation: UITextField!
+  @IBOutlet weak var teamSize: UITextField!
+  
   override func viewDidLoad() {
       super.viewDidLoad()
 
       // Do any additional setup after loading the view.
       self.navigationItem.title = "Edit Workout"
+    
+      self.workoutTitle.text = self.workout!.title!
+      self.workoutTime.text = self.workout!.time!
+      self.workoutDuration.text = String(self.workout!.duration!)
+      self.workoutLocation.text = self.workout!.location!
+      self.teamSize.text = String(self.workout!.teamSize!)
+    
   }
 
   override func didReceiveMemoryWarning() {
