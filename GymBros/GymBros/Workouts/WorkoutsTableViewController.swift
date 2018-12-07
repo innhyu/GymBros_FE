@@ -62,6 +62,21 @@ class WorkoutsTableViewController: UITableViewController {
       cell.title?.text = workout.title!
       cell.location?.text = workout.location!
       cell.time?.text = workout.time!
+      
+      if workout.isOwner(user_id: request.user_id!) {
+          cell.moreInfo?.text = "• My Workout    "
+      }
+      else {
+          cell.moreInfo?.text = ""
+      }
+      
+      if workout.finalized! {
+        cell.moreInfo?.text = cell.moreInfo!.text! + "• Finalized"
+      }
+      else {
+        cell.moreInfo?.text = cell.moreInfo!.text! + "• Waiting"
+      }
+      
       return cell
     }
   

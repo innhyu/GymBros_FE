@@ -43,6 +43,7 @@ class Workout: NSObject {
       self.teamSize = swiftyjson["workout"]["team_size"].int!
       self.finalized = swiftyjson["workout"]["finalized"].bool!
       self.check_in_code = swiftyjson["workout"]["check_in_code"].int
+      self.owner_id = swiftyjson["workout"]["user_id"].int!
       
       // Setting time
       let formatter = DateFormatter()
@@ -59,7 +60,6 @@ class Workout: NSObject {
   func parseOwner(swiftyjson: JSON){
     if swiftyjson["owner"] != JSON.null {
       // Setting owner information
-      self.owner_id = swiftyjson["owner"]["id"].int!
       let fullOwnerName = "\(swiftyjson["owner"]["first_name"].string!) \(swiftyjson["owner"]["last_name"].string!)"
       self.owner_name = fullOwnerName
     }

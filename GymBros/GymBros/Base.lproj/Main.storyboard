@@ -290,16 +290,16 @@
         <scene sceneID="wA2-mS-hyw">
             <objects>
                 <tableViewController id="dez-Z3-hiH" customClass="WorkoutsTableViewController" customModule="GymBros" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Gzc-xE-EEu">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="84" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Gzc-xE-EEu">
                         <rect key="frame" x="0.0" y="0.0" width="376" height="542"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="workoutCell" id="342-Wl-WEJ" customClass="WorkoutTableViewCell" customModule="GymBros" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="376" height="70"/>
+                                <rect key="frame" x="0.0" y="28" width="376" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="342-Wl-WEJ" id="Bal-At-lmb">
-                                    <rect key="frame" x="0.0" y="0.0" width="376" height="69.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="83.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBz-X4-U42">
@@ -323,10 +323,18 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="More Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfb-Xb-2UN">
+                                            <rect key="frame" x="21" y="63" width="339" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="location" destination="m3z-ku-dQp" id="ee6-iU-tFV"/>
+                                    <outlet property="moreInfo" destination="hfb-Xb-2UN" id="G3v-nX-bd7"/>
                                     <outlet property="time" destination="20g-ck-AH9" id="Cwz-b2-IoS"/>
                                     <outlet property="title" destination="NBz-X4-U42" id="k96-Ym-VlG"/>
                                 </connections>
@@ -485,7 +493,7 @@
             <objects>
                 <navigationController id="YRs-tK-Ncb" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DlL-qT-42d">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="376" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="1" green="0.28627450980392155" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1083,7 +1091,7 @@
         <image name="User" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ACZ-BS-af8"/>
+        <segue reference="ISo-p4-gNq"/>
         <segue reference="q2w-iC-QJv"/>
     </inferredMetricsTieBreakers>
 </document>
