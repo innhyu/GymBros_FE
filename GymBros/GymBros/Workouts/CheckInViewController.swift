@@ -14,7 +14,6 @@ class CheckInViewController: UIViewController {
 
     // Mark: - Properties
     var check_in_code: Int?
-    var workout: Workout?
     var joinedWorkout: JoinedWorkout?
     var request = Request()
 
@@ -27,10 +26,9 @@ class CheckInViewController: UIViewController {
         request.loadUser();
       
         // Do any additional setup after loading the view.
-      self.joinedWorkout = workout!.joinedWorkoutOf(user_id: request.user_id!)
       
         // Case Owner: Populate check-in code
-        if self.workout!.isOwner(user_id: request.user_id!){
+        if self.joinedWorkout!.is_owner! {
           self.check_in_input.text = String(self.check_in_code!)
         }
         else {

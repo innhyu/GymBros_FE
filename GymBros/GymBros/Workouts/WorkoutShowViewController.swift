@@ -17,6 +17,7 @@ class WorkoutShowViewController: UIViewController {
 
   var workout_id: Int?
   var workout: Workout?
+  var joinedWorkout: JoinedWorkout?
   var request = Request()
   var childTableController: JoinedWorkoutTableViewController?
   
@@ -99,6 +100,7 @@ class WorkoutShowViewController: UIViewController {
         
         // Create a workout instance
         self.workout = Workout(swiftyjson: swiftyjson)
+        self.joinedWorkout = self.workout!.joinedWorkoutOf(user_id: self.request.user_id!)
         
         // Setting appropriate labels
         self.setLabels()
@@ -166,7 +168,7 @@ class WorkoutShowViewController: UIViewController {
     }
     else if let checkinVC = segue.destination as? CheckInViewController {
       checkinVC.check_in_code = self.workout!.check_in_code!
-      checkinVC.workout = self.workout!
+      checkinVC.joinedWorkout = self.joinedWorkout
     }
   }
 

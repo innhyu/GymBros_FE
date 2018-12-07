@@ -14,6 +14,7 @@ class JoinedWorkout {
   var full_name: String?
   var accepted: Bool?
   var approved: Bool?
+  var checked_in: Bool?
   var is_owner: Bool?
   
   //MARK: - Initialization
@@ -22,6 +23,7 @@ class JoinedWorkout {
     let info = swiftyjsonArray[0]
     self.accepted = info["accepted"].bool!
     self.approved = info["approved"].bool!
+    self.checked_in = info["checked_in"].bool!
     self.id = info["id"].int!
     self.user_id = info["user_id"].int!
     
