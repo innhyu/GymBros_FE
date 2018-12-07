@@ -79,7 +79,11 @@ class CheckInViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+  
+  // Mark: - Touch Formatting
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.view.endEditing(true)
+  }
 
     /*
     // MARK: - Navigation
