@@ -25,7 +25,7 @@ class WorkoutShowViewController: UIViewController {
     super.viewDidLoad()
     request.loadUser()
     self.alamoRequest();
-//    Timer.scheduledTimer(timeInterval: 5, target: self,selector: #selector(WorkoutShowViewController.alamoRequest), userInfo: nil, repeats: true)
+    Timer.scheduledTimer(timeInterval: 5, target: self,selector: #selector(WorkoutShowViewController.alamoRequest), userInfo: nil, repeats: true)
   }
   
   
@@ -55,6 +55,12 @@ class WorkoutShowViewController: UIViewController {
                 self.workoutActionButton.isEnabled = false
                 self.alamoRequest();
               }
+              else {
+                // Alert to show that the checkin failed.
+                let fail = UIAlertController(title: "Failed", message: "Failed to join workout. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+                fail.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(fail, animated: true, completion: nil)
+              }
           };
           break;
       case "Finalize":
@@ -70,6 +76,16 @@ class WorkoutShowViewController: UIViewController {
               
               // Fire the alamorequest so the entire new finalize can be fetched
               self.alamoRequest();
+              // Showing the alert that tells workout finalize was successful
+              let success = UIAlertController(title: "Success", message: "Workout finalized!", preferredStyle: UIAlertControllerStyle.alert)
+              success.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+              self.present(success, animated: true, completion: nil)
+            }
+            else {
+              // Alert to show that the checkin failed.
+              let fail = UIAlertController(title: "Failed", message: "Workout finalize failed. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+              fail.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+              self.present(fail, animated: true, completion: nil)
             }
           };
           break;
@@ -85,7 +101,13 @@ class WorkoutShowViewController: UIViewController {
               let swiftyjson = JSON(json)
               
               // Fire the alamorequest so the entire new finalize can be fetched
-              self.alamoRequest();  
+              self.alamoRequest();
+            }
+            else {
+              // Alert to show that the checkin failed.
+              let fail = UIAlertController(title: "Failed", message: "Failed to approve workout changes. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+              fail.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+              self.present(fail, animated: true, completion: nil)
             }
           };
           break;
