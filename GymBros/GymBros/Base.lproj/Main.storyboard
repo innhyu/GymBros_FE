@@ -210,6 +210,7 @@
                             <outlet property="delegate" destination="EKE-6E-sDn" id="eeX-nS-MyV"/>
                         </connections>
                     </tableView>
+                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="age" destination="Tjz-D1-l5Z" id="hwx-ab-nkD"/>
                         <outlet property="gender" destination="Qq7-7f-cHc" id="ZIm-Ng-6cB"/>
@@ -717,6 +718,9 @@
                             <outlet property="delegate" destination="BFB-cu-f3I" id="mCA-Nb-Mrc"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="EKE-6E-sDn" kind="show" identifier="showUser" id="ehf-Gd-qF3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QOr-q6-3ja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1092,6 +1096,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ISo-p4-gNq"/>
-        <segue reference="q2w-iC-QJv"/>
+        <segue reference="1Vq-1R-1x0"/>
+        <segue reference="ehf-Gd-qF3"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -72,13 +72,19 @@ class JoinedWorkoutTableViewController: UITableViewController {
     
     return cell
   }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    performSegue(withIdentifier: "showUser", sender: indexPath)
+  }
 
   // MARK: - Navigation
 
   // In a storyboard-based application, you will often want to do a little preparation before navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      // Get the new view controller using segue.destinationViewController.
-      // Pass the selected object to the new view controller.
+      if let profileVC = segue.destination as? ProfileViewController {
+        let indexPath = sender as! IndexPath
+        profileVC.user_id = self.workout!.joined_workouts[indexPath.row].user_id!
+      }
   }
 
 }

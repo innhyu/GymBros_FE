@@ -23,6 +23,7 @@ class ProfileViewController: UITableViewController {
     // Do any additional setup after loading the view.
     
     self.request.loadUser()
+    tableView.allowsSelection = false;
     
     Alamofire.request("https://cryptic-temple-10365.herokuapp.com/users/\(user_id!)", method: .get)
       .validate(statusCode: 200..<300)
