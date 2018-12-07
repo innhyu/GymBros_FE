@@ -132,6 +132,14 @@ class WorkoutShowViewController: UIViewController {
         self.workoutActionButton.setTitle("Check-In", for: .normal)
         self.workoutActionButton.isEnabled = true
         self.workoutEditButton.isEnabled = false
+        
+        if self.joinedWorkout!.checked_in! {
+          self.workoutActionButton.setTitleColor(UIColor(red: 128/255, green: 232/255, blue: 38/255, alpha: 1), for: [])
+        }
+        else {
+          self.workoutActionButton.setTitleColor(UIColor(red: 45/255, green: 94/255, blue: 255/255, alpha: 1), for: [])
+        }
+        
       }
       else if self.workout!.isOwner(user_id: self.request.user_id!) {
         self.workoutActionButton.setTitle("Finalize", for: .normal)
