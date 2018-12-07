@@ -46,7 +46,9 @@ class CheckInViewController: UIViewController {
         "check_in_code": self.check_in_input.text ??  ""
       ]
       
-      Alamofire.request("https://cryptic-temple-10365.herokuapp.com/joined_workouts/\(self.joinedWorkout!.id!)/check_in", method: .patch, parameters: parameters).responseJSON { response in
+      Alamofire.request("https://cryptic-temple-10365.herokuapp.com/joined_workouts/\(self.joinedWorkout!.id!)/check_in", method: .patch, parameters: parameters)
+        .validate(statusCode: 200..<300)
+        .responseJSON { response in
         print("Request: \(String(describing: response.request))")   // original url request
         print("Response: \(String(describing: response.response))") // http url response
         print("Result: \(response.result)")                         // response serialization result

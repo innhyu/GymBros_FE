@@ -64,7 +64,9 @@ class WorkoutShowViewController: UIViewController {
           };
           break;
       case "Finalize":
-          Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(self.workout_id!)/finalize", method: .patch).responseJSON { response in
+          Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(self.workout_id!)/finalize", method: .patch)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
             print("Request: \(String(describing: response.request))")   // original url request
             print("Response: \(String(describing: response.response))") // http url response
             print("Result: \(response.result)")                         // response serialization result
@@ -90,7 +92,9 @@ class WorkoutShowViewController: UIViewController {
           };
           break;
       case "Approve":
-          Alamofire.request("https://cryptic-temple-10365.herokuapp.com/joined_workouts/\(self.joinedWorkout!.id!)/approve", method: .patch).responseJSON { response in
+          Alamofire.request("https://cryptic-temple-10365.herokuapp.com/joined_workouts/\(self.joinedWorkout!.id!)/approve", method: .patch)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
             print("Request: \(String(describing: response.request))")   // original url request
             print("Response: \(String(describing: response.response))") // http url response
             print("Result: \(response.result)")                         // response serialization result
@@ -121,7 +125,9 @@ class WorkoutShowViewController: UIViewController {
   
   // Function to fetch the workout information from the API
   @objc func alamoRequest() {
-    Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(self.workout_id!)/\(self.request.user_id!)").responseJSON { response in
+    Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(self.workout_id!)/\(self.request.user_id!)")
+      .validate(statusCode: 200..<300)
+      .responseJSON { response in
       print("Request: \(String(describing: response.request))")   // original url request
       print("Response: \(String(describing: response.response))") // http url response
       print("Result: \(response.result)")                         // response serialization result
