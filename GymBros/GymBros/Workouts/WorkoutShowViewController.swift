@@ -58,7 +58,6 @@ class WorkoutShowViewController: UIViewController {
           };
           break;
       case "Finalize":
-          print("Finalizing the workout")
           Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(self.workout_id!)/finalize", method: .patch).responseJSON { response in
             print("Request: \(String(describing: response.request))")   // original url request
             print("Response: \(String(describing: response.response))") // http url response
@@ -71,13 +70,25 @@ class WorkoutShowViewController: UIViewController {
               
               // Fire the alamorequest so the entire new finalize can be fetched
               self.alamoRequest();
-              
             }
           };
           break;
-      case "Accept":
+      case "Approve":
+          Alamofire.request("https://cryptic-temple-10365.herokuapp.com/joined_workouts/\(self.joinedWorkout!.id!)/approve", method: .patch).responseJSON { response in
+            print("Request: \(String(describing: response.request))")   // original url request
+            print("Response: \(String(describing: response.response))") // http url response
+            print("Result: \(response.result)")                         // response serialization result
+            
+            if let json = response.result.value {
+              
+              print("JSON: \(json)") // serialized json response
+              let swiftyjson = JSON(json)
+              
+              // Fire the alamorequest so the entire new finalize can be fetched
+              self.alamoRequest();  
+            }
+          };
           break;
-        
       case "Check-In":
           performSegue(withIdentifier: "checkIn", sender: self);
           break;
@@ -137,7 +148,7 @@ class WorkoutShowViewController: UIViewController {
           self.workoutActionButton.setTitleColor(UIColor(red: 128/255, green: 232/255, blue: 38/255, alpha: 1), for: [])
         }
         else {
-          self.workoutActionButton.setTitleColor(UIColor(red: 45/255, green: 94/255, blue: 255/255, alpha: 1), for: [])
+          self.workoutActionButton.setTitleColor(UIColor(red: 255/255, green: 240/255, blue: 25/255, alpha: 1), for: [])
         }
         
       }
@@ -149,7 +160,14 @@ class WorkoutShowViewController: UIViewController {
       else {
         if self.workout!.hasJoined(user_id: self.request.user_id!) {
           if self.workout!.hasBeenAccepted(user_id: self.request.user_id!){
-            self.workoutActionButton.setTitle("Accept", for: .normal)
+            
+            if joinedWorkout!.approved! {
+              self.workoutActionButton.setTitleColor(UIColor(red: 128/255, green: 232/255, blue: 38/255, alpha: 1), for: [])
+            }
+            else {
+              self.workoutActionButton.setTitleColor(UIColor(red: 255/255, green: 240/255, blue: 25/255, alpha: 1), for: [])
+            }
+            self.workoutActionButton.setTitle("Approve", for: .normal)
             self.workoutActionButton.isEnabled = true
           }
           else {
