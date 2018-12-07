@@ -103,4 +103,14 @@ class Workout: NSObject {
     return user_id == self.owner_id!
   }
   
+  // Function to retrieve joined_workout for the user
+  func joinedWorkoutOf(user_id: Int) -> JoinedWorkout? {
+    for joined_workout in self.joined_workouts {
+      if user_id == joined_workout.user_id! {
+        return joined_workout
+      }
+    }
+    return nil
+  }
+  
 }

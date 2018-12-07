@@ -725,6 +725,9 @@
                                 <color key="backgroundColor" red="0.30196078431372547" green="0.84313725490196079" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Check-In"/>
+                                <connections>
+                                    <action selector="check_in_user" destination="eta-QN-cgW" eventType="touchUpInside" id="IRC-J1-PMZ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Share the check-in code with your members when you meet them in the designated location!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZf-GJ-zqM">
                                 <rect key="frame" x="26" y="73" width="323" height="59"/>

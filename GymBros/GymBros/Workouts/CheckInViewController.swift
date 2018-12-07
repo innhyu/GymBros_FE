@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class CheckInViewController: UIViewController {
 
     // Mark: - Properties
     var check_in_code: Int?
     var workout: Workout?
+    var joinedWorkout: JoinedWorkout?
     var request = Request()
 
     @IBOutlet weak var check_in_input: UITextField!
@@ -24,6 +27,7 @@ class CheckInViewController: UIViewController {
         request.loadUser();
       
         // Do any additional setup after loading the view.
+      self.joinedWorkout = workout!.joinedWorkoutOf(user_id: request.user_id!)
       
         // Case Owner: Populate check-in code
         if self.workout!.isOwner(user_id: request.user_id!){
@@ -37,7 +41,38 @@ class CheckInViewController: UIViewController {
         }
     }
   
-  
+    // Function to check the user in
+    @IBAction func check_in_user() {
+      let parameters: Parameters = [
+        "check_in_code": self.check_in_input.text ??  ""
+      ]
+      
+      Alamofire.request("https://cryptic-temple-10365.herokuapp.com/joined_workouts/\(self.joinedWorkout!.id!)/check_in", method: .patch, parameters: parameters).responseJSON { response in
+        print("Request: \(String(describing: response.request))")   // original url request
+        print("Response: \(String(describing: response.response))") // http url response
+        print("Result: \(response.result)")                         // response serialization result
+        
+        if let json = response.result.value {
+          
+          print("JSON: \(json)") // serialized json response
+          let swiftyjson = JSON(json)
+          
+          // Showing the alert that tells user check-in was successful
+          // SIDE: Popping back to the login screen
+          let success = UIAlertController(title: "Success", message: "Checked-in! Enjoy your workout!", preferredStyle: UIAlertControllerStyle.alert)
+          success.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+            self.navigationController?.popViewController(animated: true)
+          }))
+          self.present(success, animated: true, completion: nil)
+        }
+        else {
+          // Alert to show that the checkin failed.
+          let fail = UIAlertController(title: "Failed", message: "Check-in failed. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+          fail.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+          self.present(fail, animated: true, completion: nil)
+        }
+      };
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
