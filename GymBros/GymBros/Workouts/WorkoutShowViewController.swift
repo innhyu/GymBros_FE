@@ -76,6 +76,10 @@ class WorkoutShowViewController: UIViewController {
           break;
       case "Accept":
           break;
+        
+      case "Check-In":
+          performSegue(withIdentifier: "checkIn", sender: self);
+          break;
       default:
           break;
       }
@@ -123,13 +127,13 @@ class WorkoutShowViewController: UIViewController {
   // Function to display the correct type of workout action button depending on status
   func setButton() {
       if self.workout!.finalized! {
-        self.workoutActionButton.setTitle("Check In", for: .normal)
-        self.workoutActionButton.isEnabled = false
-        self.editButtonItem.isEnabled = false
+        self.workoutActionButton.setTitle("Check-In", for: .normal)
+        self.workoutActionButton.isEnabled = true
+        self.workoutEditButton.isEnabled = false
       }
       else if self.workout!.isOwner(user_id: self.request.user_id!) {
         self.workoutActionButton.setTitle("Finalize", for: .normal)
-        self.editButtonItem.isEnabled = true
+        self.workoutEditButton.isEnabled = true
         self.workoutActionButton.isEnabled = true
       }
       else {
