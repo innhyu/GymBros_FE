@@ -26,6 +26,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     let genderPicker = UIPickerView()
     gender.inputView = genderPicker
     genderPicker.delegate = self
+    self.navigationItem.title = "Register"
   }
   
   override func viewWillAppear(_ animated: Bool) {
