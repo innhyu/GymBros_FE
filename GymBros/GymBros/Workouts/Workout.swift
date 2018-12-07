@@ -16,6 +16,7 @@ class Workout: NSObject {
   var location: String?
   var teamSize: Int?
   var owner_id: Int?
+  var finalized: Bool?
   var owner_name: String?
   var joined_workouts = [JoinedWorkout]()
   
@@ -39,6 +40,7 @@ class Workout: NSObject {
       self.duration = swiftyjson["workout"]["duration"].int!
       self.location = swiftyjson["workout"]["location"].string!
       self.teamSize = swiftyjson["workout"]["team_size"].int!
+      self.finalized = swiftyjson["workout"]["finalized"].bool!
       
       // Setting time
       let formatter = DateFormatter()

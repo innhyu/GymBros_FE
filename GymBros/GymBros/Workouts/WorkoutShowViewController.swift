@@ -24,7 +24,7 @@ class WorkoutShowViewController: UIViewController {
     super.viewDidLoad()
     request.loadUser()
     self.alamoRequest();
-    Timer.scheduledTimer(timeInterval: 5, target: self,selector: #selector(WorkoutShowViewController.alamoRequest), userInfo: nil, repeats: true)
+//    Timer.scheduledTimer(timeInterval: 5, target: self,selector: #selector(WorkoutShowViewController.alamoRequest), userInfo: nil, repeats: true)
   }
   
   
@@ -57,6 +57,22 @@ class WorkoutShowViewController: UIViewController {
           };
           break;
       case "Finalize":
+          print("Finalizing the workout")
+          Alamofire.request("https://cryptic-temple-10365.herokuapp.com/workouts/\(self.workout_id!)/finalize", method: .patch).responseJSON { response in
+            print("Request: \(String(describing: response.request))")   // original url request
+            print("Response: \(String(describing: response.response))") // http url response
+            print("Result: \(response.result)")                         // response serialization result
+            
+            if let json = response.result.value {
+              
+              print("JSON: \(json)") // serialized json response
+              let swiftyjson = JSON(json)
+              
+              // Fire the alamorequest so the entire new finalize can be fetched
+              self.alamoRequest();
+              
+            }
+          };
           break;
       case "Accept":
           break;
@@ -96,6 +112,7 @@ class WorkoutShowViewController: UIViewController {
   func setLabels(){
     
     // Setting label information
+    
     self.navigationItem.title = self.workout!.title!
     self.time.text = self.workout!.time!
     self.location.text = self.workout!.location!
@@ -105,8 +122,14 @@ class WorkoutShowViewController: UIViewController {
 
   // Function to display the correct type of workout action button depending on status
   func setButton() {
-      if self.workout!.isOwner(user_id: self.request.user_id!) {
+      if self.workout!.finalized! {
+        self.workoutActionButton.setTitle("Check In", for: .normal)
+        self.workoutActionButton.isEnabled = false
+        self.editButtonItem.isEnabled = false
+      }
+      else if self.workout!.isOwner(user_id: self.request.user_id!) {
         self.workoutActionButton.setTitle("Finalize", for: .normal)
+        self.editButtonItem.isEnabled = true
         self.workoutActionButton.isEnabled = true
       }
       else {
