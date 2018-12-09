@@ -90,14 +90,14 @@ class GymBrosTests: XCTestCase {
     }
   
     func testHasJoined2() {
-      print("\nStart HasJoined Test 2 ---------- \n")
-      
-      let workout = Workout(swiftyjson: self.json[1])
-      XCTAssertTrue(workout.hasJoined(user_id: 1))
-      XCTAssertFalse(workout.hasJoined(user_id: 2))
-      XCTAssertFalse(workout.hasJoined(user_id: 3))
-      
-      print("\nEnd HasJoined Test 2 ---------- \n")
+        print("\nStart HasJoined Test 2 ---------- \n")
+
+        let workout = Workout(swiftyjson: self.json[1])
+        XCTAssertTrue(workout.hasJoined(user_id: 1))
+        XCTAssertFalse(workout.hasJoined(user_id: 2))
+        XCTAssertFalse(workout.hasJoined(user_id: 3))
+
+        print("\nEnd HasJoined Test 2 ---------- \n")
     }
   
     func testHasBeenAccepted() {
@@ -112,14 +112,14 @@ class GymBrosTests: XCTestCase {
     }
   
     func testHasBeenAccepted2() {
-      print("\nStart HasBeenAccepted Test 2 ---------- \n")
-      
-      let workout = Workout(swiftyjson: self.json[1])
-      XCTAssertTrue(workout.hasBeenAccepted(user_id: 1))
-      XCTAssertFalse(workout.hasBeenAccepted(user_id: 2))
-      XCTAssertFalse(workout.hasBeenAccepted(user_id: 3))
-      
-      print("\nEnd HasBeenAccepted Test 2 ---------- \n")
+        print("\nStart HasBeenAccepted Test 2 ---------- \n")
+
+        let workout = Workout(swiftyjson: self.json[1])
+        XCTAssertTrue(workout.hasBeenAccepted(user_id: 1))
+        XCTAssertFalse(workout.hasBeenAccepted(user_id: 2))
+        XCTAssertFalse(workout.hasBeenAccepted(user_id: 3))
+
+        print("\nEnd HasBeenAccepted Test 2 ---------- \n")
     }
   
     func testIsOwner() {
@@ -134,14 +134,14 @@ class GymBrosTests: XCTestCase {
     }
   
     func testIsOwner2() {
-      print("\nStart isOwner Test 2 ---------- \n")
-      
-      let workout = Workout(swiftyjson: self.json[1])
-      XCTAssertTrue(workout.isOwner(user_id: 1))
-      XCTAssertFalse(workout.isOwner(user_id: 2))
-      XCTAssertFalse(workout.isOwner(user_id: 3))
-      
-      print("\nEnd isOwner Test 2 ---------- \n")
+        print("\nStart isOwner Test 2 ---------- \n")
+
+        let workout = Workout(swiftyjson: self.json[1])
+        XCTAssertTrue(workout.isOwner(user_id: 1))
+        XCTAssertFalse(workout.isOwner(user_id: 2))
+        XCTAssertFalse(workout.isOwner(user_id: 3))
+
+        print("\nEnd isOwner Test 2 ---------- \n")
     }
   
     func testJoinedWorkoutOf() {
@@ -158,15 +158,49 @@ class GymBrosTests: XCTestCase {
     }
   
     func testJoinedWorkoutOf2() {
-      print("\nStart joinedWorkout Test 2 ---------- \n")
-      
-      let workout = Workout(swiftyjson: self.json[1])
-      XCTAssertTrue(workout.joinedWorkoutOf(user_id: 1) != nil)
-      XCTAssertNil(workout.joinedWorkoutOf(user_id: 2))
-      XCTAssertNil(workout.joinedWorkoutOf(user_id: 3))
-      XCTAssertTrue(workout.joinedWorkoutOf(user_id: 1)!.user_id == 1)
-      
-      print("\nEnd joinedWorkout Test 2 ---------- \n")
+        print("\nStart joinedWorkout Test 2 ---------- \n")
+
+        let workout = Workout(swiftyjson: self.json[1])
+        XCTAssertTrue(workout.joinedWorkoutOf(user_id: 1) != nil)
+        XCTAssertNil(workout.joinedWorkoutOf(user_id: 2))
+        XCTAssertNil(workout.joinedWorkoutOf(user_id: 3))
+        XCTAssertTrue(workout.joinedWorkoutOf(user_id: 1)!.user_id == 1)
+
+        print("\nEnd joinedWorkout Test 2 ---------- \n")
+    }
+    
+    func testIntegration1() {
+        print("\nStart Integration Test 1 ---------- \n")
+        let workout = Workout(swiftyjson: self.json[0])
+    
+        let owner = workout.joinedWorkoutOf(user_id: workout.owner_id!)!
+        let member = workout.joinedWorkoutOf(user_id: 2)!
+        
+        XCTAssert(owner.is_owner!)
+        XCTAssert(workout.hasJoined(user_id: owner.user_id!))
+        XCTAssert(workout.hasBeenAccepted(user_id: owner.user_id!))
+        
+        XCTAssertFalse(member.is_owner!)
+        XCTAssert(workout.hasJoined(user_id: member.user_id!))
+        XCTAssert(workout.hasBeenAccepted(user_id: member.user_id!))
+            
+        print("\nEnd Integration Test 1 ---------- \n")
+    }
+    
+    func testIntegration2() {
+        print("\nStart Integration Test 2 ---------- \n")
+        let workout = Workout(swiftyjson: self.json[1])
+        
+        let owner = workout.joinedWorkoutOf(user_id: workout.owner_id!)!
+        
+        XCTAssert(owner.is_owner!)
+        XCTAssert(workout.hasJoined(user_id: owner.user_id!))
+        XCTAssert(workout.hasBeenAccepted(user_id: owner.user_id!))
+        
+        XCTAssertFalse(workout.hasJoined(user_id: 2))
+        XCTAssertFalse(workout.hasBeenAccepted(user_id: 2))
+        
+        print("\nEnd Integration Test 2 ---------- \n")
     }
     
 }
