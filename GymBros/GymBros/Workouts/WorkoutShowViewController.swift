@@ -23,7 +23,7 @@ class WorkoutShowViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    request.loadUser()
+    self.request.loadUser()
     self.alamoRequest();
     Timer.scheduledTimer(timeInterval: 5, target: self,selector: #selector(WorkoutShowViewController.alamoRequest), userInfo: nil, repeats: true)
   }
@@ -110,6 +110,8 @@ class WorkoutShowViewController: UIViewController {
             else {
               // Alert to show that the checkin failed.
               let fail = UIAlertController(title: "Failed", message: "Failed to approve workout changes. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+              // Avoiding weird snapshot errors; from stackoverflow
+              fail.view.layoutIfNeeded()
               fail.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
               self.present(fail, animated: true, completion: nil)
             }
