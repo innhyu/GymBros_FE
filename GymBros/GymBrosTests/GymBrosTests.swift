@@ -38,8 +38,8 @@ class GymBrosTests: XCTestCase {
         super.tearDown()
     }
     
-    func testParser() {
-        print("\nStart Parser Test ---------- \n")
+    func testParser1() {
+        print("\nStart Parser Test 1---------- \n")
         let workout = Workout(swiftyjson: self.json[0])
 
         XCTAssert(1 == workout.id!)
@@ -51,10 +51,31 @@ class GymBrosTests: XCTestCase {
         XCTAssert("WIEGAND GYMNASIUM" == workout.location!)
         XCTAssert(3 == workout.teamSize!)
         XCTAssertTrue(workout.finalized!)
+        XCTAssertNotNil(workout.check_in_code)
         XCTAssert("Andy Lee" == workout.owner_name!)
         XCTAssert(2 == workout.joined_workouts.count)
 
-        print("\nEnd of Properties Test ----------- \n")
+        print("\nEnd of Parser Test 1----------- \n")
+    }
+    
+    func testParser2() {
+        print("\nStart Parser Test 2---------- \n")
+        let workout = Workout(swiftyjson: self.json[1])
+        
+        XCTAssert(2 == workout.id!)
+        XCTAssert(1 == workout.owner_id!)
+        XCTAssert("Workout" == workout.title!)
+        // Skipping formatting validation for time because it's formatted differently
+        XCTAssertNotNil(workout.time)
+        XCTAssert(90 == workout.duration!)
+        XCTAssert("WIEGAND GYMNASIUM" == workout.location!)
+        XCTAssert(6 == workout.teamSize!)
+        XCTAssertFalse(workout.finalized!)
+        XCTAssertNil(workout.check_in_code)
+        XCTAssert("Andy Lee" == workout.owner_name!)
+        XCTAssert(1 == workout.joined_workouts.count)
+        
+        print("\nEnd of Parser Test 2----------- \n")
     }
     
     func testHasJoined() {
