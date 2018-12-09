@@ -17,7 +17,8 @@
 		B721F77E2150563D00306F1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B721F77C2150563D00306F1F /* Main.storyboard */; };
 		B721F7802150563E00306F1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B721F77F2150563E00306F1F /* Assets.xcassets */; };
 		B721F7832150563E00306F1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B721F7812150563E00306F1F /* LaunchScreen.storyboard */; };
-		B72456DC21BDBD95000DAA66 /* sample.json in Resources */ = {isa = PBXBuildFile; fileRef = B703F15D21BDB5890059F579 /* sample.json */; settings = {ASSET_TAGS = (sample, ); }; };
+		B72456DC21BDBD95000DAA66 /* sample1.json in Resources */ = {isa = PBXBuildFile; fileRef = B703F15D21BDB5890059F579 /* sample1.json */; settings = {ASSET_TAGS = (sample1, ); }; };
+		B72456E221BDCD1E000DAA66 /* sample2.json in Resources */ = {isa = PBXBuildFile; fileRef = B72456E121BDCD1E000DAA66 /* sample2.json */; };
 		B73003A621951E3F0086A5F4 /* WorkoutsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73003A521951E3F0086A5F4 /* WorkoutsTableViewController.swift */; };
 		B73003A8219542B20086A5F4 /* WorkoutCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73003A7219542B20086A5F4 /* WorkoutCreateViewController.swift */; };
 		B731E4D321BDB6EB00EC7397 /* GymBrosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703F15221BDB50E0059F579 /* GymBrosTests.swift */; };
@@ -51,7 +52,7 @@
 		B703F15021BDB50E0059F579 /* GymBrosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GymBrosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B703F15221BDB50E0059F579 /* GymBrosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymBrosTests.swift; sourceTree = "<group>"; };
 		B703F15421BDB50E0059F579 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = GymBrosTests/Info.plist; sourceTree = SOURCE_ROOT; };
-		B703F15D21BDB5890059F579 /* sample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample.json; sourceTree = "<group>"; };
+		B703F15D21BDB5890059F579 /* sample1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample1.json; sourceTree = "<group>"; };
 		B709528721B520DF006B13EB /* JoinedWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedWorkout.swift; sourceTree = "<group>"; };
 		B709528921B5D06C006B13EB /* WorkoutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsViewController.swift; sourceTree = "<group>"; };
 		B721F7752150563D00306F1F /* GymBros.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GymBros.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +62,7 @@
 		B721F77F2150563E00306F1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B721F7822150563E00306F1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B721F7842150563E00306F1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B72456E121BDCD1E000DAA66 /* sample2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample2.json; sourceTree = "<group>"; };
 		B73003A521951E3F0086A5F4 /* WorkoutsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsTableViewController.swift; sourceTree = "<group>"; };
 		B73003A7219542B20086A5F4 /* WorkoutCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCreateViewController.swift; sourceTree = "<group>"; };
 		B76B5A272196234B00A0316C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +120,8 @@
 		B703F15121BDB50E0059F579 /* GymBrosTests */ = {
 			isa = PBXGroup;
 			children = (
-				B703F15D21BDB5890059F579 /* sample.json */,
+				B72456E121BDCD1E000DAA66 /* sample2.json */,
+				B703F15D21BDB5890059F579 /* sample1.json */,
 				B703F15221BDB50E0059F579 /* GymBrosTests.swift */,
 			);
 			path = GymBrosTests;
@@ -271,6 +274,7 @@
 				KnownAssetTags = (
 					New,
 					sample,
+					sample1,
 				);
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
@@ -309,7 +313,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B72456DC21BDBD95000DAA66 /* sample.json in Resources */,
+				B72456E221BDCD1E000DAA66 /* sample2.json in Resources */,
+				B72456DC21BDBD95000DAA66 /* sample1.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,13 +595,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4K32D9N679;
+				DEVELOPMENT_TEAM = 9CVRFNK7H5;
 				INFOPLIST_FILE = GymBros/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CMUIS.GymBros;
+				PRODUCT_BUNDLE_IDENTIFIER = CMUIS2.GymBros;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -611,13 +616,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4K32D9N679;
+				DEVELOPMENT_TEAM = 9CVRFNK7H5;
 				INFOPLIST_FILE = GymBros/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CMUIS.GymBros;
+				PRODUCT_BUNDLE_IDENTIFIER = CMUIS2.GymBros;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
