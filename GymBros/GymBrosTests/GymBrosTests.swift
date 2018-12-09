@@ -2,12 +2,11 @@
 //  GymBrosTests.swift
 //  GymBrosTests
 //
-//  Created by 이인혁 on 09/12/2018.
-//  Copyright © 2018 Carnegie Mellon University IS Dept. All rights reserved.
 //
 
 import XCTest
 import SwiftyJSON
+@testable import GymBros
 
 class GymBrosTests: XCTestCase {
     var json: JSON?
@@ -32,9 +31,25 @@ class GymBrosTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testParser() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        print("\nStart Parser Test ---------- \n")
+        let workout = Workout(swiftyjson: self.json!)
+
+        XCTAssert(1 == workout.id!)
+        XCTAssert(1 == workout.owner_id!)
+        XCTAssert("My Leg Workout" == workout.title!)
+        // Skipping formatting validation for time because it's formatted differently
+        XCTAssertNotNil(workout.time)
+        XCTAssert(180 == workout.duration!)
+        XCTAssert("WIEGAND GYMNASIUM" == workout.location!)
+        XCTAssert(3 == workout.teamSize!)
+        XCTAssertTrue(workout.finalized!)
+        XCTAssert("Andy Lee" == workout.owner_name!)
+        XCTAssert(2 == workout.joined_workouts.count)
+
+        print("\nEnd of Properties Test ----------- \n\n")
     }
     
     func testPerformanceExample() {
