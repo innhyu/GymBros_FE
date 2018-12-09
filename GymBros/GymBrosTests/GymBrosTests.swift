@@ -8,6 +8,7 @@
 
 import XCTest
 import SwiftyJSON
+@testable import GymBros
 
 class GymBrosTests: XCTestCase {
     var json: JSON?
@@ -32,16 +33,34 @@ class GymBrosTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testhHasJoined() {
+      let workout = Workout(swiftyjson: self.json!)
+      XCTAssertTrue(workout.hasJoined(user_id: 1))
+      XCTAssertTrue(workout.hasJoined(user_id: 2))
+      XCTAssertFalse(workout.hasJoined(user_id: 3))
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+  
+    func testHasBeenAccepted() {
+      let workout = Workout(swiftyjson: self.json!)
+      XCTAssertTrue(workout.hasBeenAccepted(user_id: 1))
+      XCTAssertTrue(workout.hasBeenAccepted(user_id: 2))
+      XCTAssertFalse(workout.hasBeenAccepted(user_id: 3))
+    }
+  
+    func testIsOwner() {
+      let workout = Workout(swiftyjson: self.json!)
+      XCTAssertTrue(workout.isOwner(user_id: 1))
+      XCTAssertFalse(workout.isOwner(user_id: 2))
+      XCTAssertFalse(workout.isOwner(user_id: 3))
+    }
+  
+    func testJoinedWorkoutOf() {
+      let workout = Workout(swiftyjson: self.json!)
+      XCTAssertTrue(workout.joinedWorkoutOf(user_id: 1) != nil)
+      XCTAssertTrue(workout.joinedWorkoutOf(user_id: 2) != nil)
+      XCTAssertNil(workout.joinedWorkoutOf(user_id: 3))
+      XCTAssertTrue(workout.joinedWorkoutOf(user_id: 1)!.user_id == 1)
+      XCTAssertTrue(workout.joinedWorkoutOf(user_id: 2)!.user_id == 2)
     }
     
 }
