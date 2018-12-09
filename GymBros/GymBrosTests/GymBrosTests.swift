@@ -68,6 +68,17 @@ class GymBrosTests: XCTestCase {
         print("\nEnd HasJoined Test ---------- \n")
     }
   
+    func testHasJoined2() {
+      print("\nStart HasJoined Test2 ---------- \n")
+      
+      let workout = Workout(swiftyjson: self.json[1])
+      XCTAssertTrue(workout.hasJoined(user_id: 1))
+      XCTAssertFalse(workout.hasJoined(user_id: 2))
+      XCTAssertFalse(workout.hasJoined(user_id: 3))
+      
+      print("\nEnd HasJoined Test2 ---------- \n")
+    }
+  
     func testHasBeenAccepted() {
         print("\nStart HasBeenAccepted Test ---------- \n")
         
@@ -77,6 +88,17 @@ class GymBrosTests: XCTestCase {
         XCTAssertFalse(workout.hasBeenAccepted(user_id: 3))
         
         print("\nEnd HasBeenAccepted Test ---------- \n")
+    }
+  
+    func testHasBeenAccepted2() {
+      print("\nStart HasBeenAccepted Test2 ---------- \n")
+      
+      let workout = Workout(swiftyjson: self.json[1])
+      XCTAssertTrue(workout.hasBeenAccepted(user_id: 1))
+      XCTAssertFalse(workout.hasBeenAccepted(user_id: 2))
+      XCTAssertFalse(workout.hasBeenAccepted(user_id: 3))
+      
+      print("\nEnd HasBeenAccepted Test2 ---------- \n")
     }
   
     func testIsOwner() {
@@ -90,6 +112,17 @@ class GymBrosTests: XCTestCase {
         print("\nEnd isOwner Test ---------- \n")
     }
   
+    func testIsOwner2() {
+      print("\nStart isOwner Test2 ---------- \n")
+      
+      let workout = Workout(swiftyjson: self.json[1])
+      XCTAssertTrue(workout.isOwner(user_id: 1))
+      XCTAssertFalse(workout.isOwner(user_id: 2))
+      XCTAssertFalse(workout.isOwner(user_id: 3))
+      
+      print("\nEnd isOwner Test2 ---------- \n")
+    }
+  
     func testJoinedWorkoutOf() {
         print("\nStart joinedWorkout Test ---------- \n")
         
@@ -101,6 +134,18 @@ class GymBrosTests: XCTestCase {
         XCTAssertTrue(workout.joinedWorkoutOf(user_id: 2)!.user_id == 2)
         
         print("\nEnd joinedWorkout Test ---------- \n")
+    }
+  
+    func testJoinedWorkoutOf2() {
+      print("\nStart joinedWorkout Test2 ---------- \n")
+      
+      let workout = Workout(swiftyjson: self.json[1])
+      XCTAssertTrue(workout.joinedWorkoutOf(user_id: 1) != nil)
+      XCTAssertNil(workout.joinedWorkoutOf(user_id: 2))
+      XCTAssertNil(workout.joinedWorkoutOf(user_id: 3))
+      XCTAssertTrue(workout.joinedWorkoutOf(user_id: 1)!.user_id == 1)
+      
+      print("\nEnd joinedWorkout Test2 ---------- \n")
     }
     
 }
