@@ -1,0 +1,80 @@
+{
+    "workout": {
+        "id": 1,
+        "user_id": 1,
+        "title": "My Leg Workout",
+        "time": "2018-12-07T21:00:00.000-05:00",
+        "duration": 180,
+        "location": "WIEGAND GYMNASIUM",
+        "team_size": 3,
+        "finalized": true,
+        "check_in_code": 812481,
+        "created_at": "2018-12-07T14:01:41.545-05:00",
+        "updated_at": "2018-12-07T14:02:43.892-05:00"
+    },
+    "joined_workouts": [
+                        [
+                         {
+                         "id": 1,
+                         "workout_id": 1,
+                         "user_id": 1,
+                         "approved": true,
+                         "checked_in": true,
+                         "accepted": true,
+                         "created_at": "2018-12-07T14:01:41.596-05:00",
+                         "updated_at": "2018-12-07T14:01:41.596-05:00"
+                         },
+                         {
+                         "id": 1,
+                         "facebook_id": null,
+                         "email": "andy@google.com",
+                         "first_name": "Andy",
+                         "last_name": "Lee",
+                         "gender": "Male",
+                         "password_digest": "$2a$10$E5y6Nu2fHR037YtHFBP8peecVGXSIyQxGW1rpeTRqiTleV5.S6jXm",
+                         "age": 30,
+                         "role": "Real",
+                         "created_at": "2018-12-07T14:00:24.459-05:00",
+                         "updated_at": "2018-12-07T14:00:24.459-05:00"
+                         }
+                         ],
+                        [
+                         {
+                         "id": 3,
+                         "workout_id": 1,
+                         "user_id": 2,
+                         "approved": true,
+                         "checked_in": true,
+                         "accepted": true,
+                         "created_at": "2018-12-07T14:02:06.485-05:00",
+                         "updated_at": "2018-12-07T14:03:02.888-05:00"
+                         },
+                         {
+                         "id": 2,
+                         "facebook_id": null,
+                         "email": "dylan@google.com",
+                         "first_name": "Dylan",
+                         "last_name": "Schwartz",
+                         "gender": "Male",
+                         "password_digest": "$2a$10$9AD3sfNfQLNOAIsXc03nbeFGAKEw3Ys4JxilR8JeIfnlb5gMNZjm2",
+                         "age": 30,
+                         "role": "Real",
+                         "created_at": "2018-12-07T14:01:00.228-05:00",
+                         "updated_at": "2018-12-07T14:01:00.228-05:00"
+                         }
+                         ]
+                        ],
+    "owner": {
+        "id": 1,
+        "facebook_id": null,
+        "email": "andy@google.com",
+        "first_name": "Andy",
+        "last_name": "Lee",
+        "gender": "Male",
+        "password_digest": "$2a$10$E5y6Nu2fHR037YtHFBP8peecVGXSIyQxGW1rpeTRqiTleV5.S6jXm",
+        "age": 30,
+        "role": "Real",
+        "created_at": "2018-12-07T14:00:24.459-05:00",
+        "updated_at": "2018-12-07T14:00:24.459-05:00"
+    }
+}

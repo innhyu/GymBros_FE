@@ -1,0 +1,55 @@
+{
+  "workout": {
+    "id": 2,
+    "user_id": 1,
+    "title": "Workout",
+    "time": "2018-12-07T23:11:00.000-05:00",
+    "duration": 90,
+    "location": "WIEGAND GYMNASIUM",
+    "team_size": 6,
+    "finalized": false,
+    "check_in_code": null,
+    "created_at": "2018-12-07T16:11:15.613-05:00",
+    "updated_at": "2018-12-07T16:11:15.613-05:00"
+  },
+  "joined_workouts": [
+    [
+      {
+        "id": 4,
+        "workout_id": 2,
+        "user_id": 1,
+        "approved": true,
+        "checked_in": true,
+        "accepted": true,
+        "created_at": "2018-12-07T16:11:15.660-05:00",
+        "updated_at": "2018-12-07T16:11:15.660-05:00"
+      },
+      {
+        "id": 1,
+        "facebook_id": null,
+        "email": "andy@google.com",
+        "first_name": "Andy",
+        "last_name": "Lee",
+        "gender": "Male",
+        "password_digest": "$2a$10$E5y6Nu2fHR037YtHFBP8peecVGXSIyQxGW1rpeTRqiTleV5.S6jXm",
+        "age": 30,
+        "role": "Real",
+        "created_at": "2018-12-07T14:00:24.459-05:00",
+        "updated_at": "2018-12-07T14:00:24.459-05:00"
+      }
+    ]
+  ],
+  "owner": {
+    "id": 1,
+    "facebook_id": null,
+    "email": "andy@google.com",
+    "first_name": "Andy",
+    "last_name": "Lee",
+    "gender": "Male",
+    "password_digest": "$2a$10$E5y6Nu2fHR037YtHFBP8peecVGXSIyQxGW1rpeTRqiTleV5.S6jXm",
+    "age": 30,
+    "role": "Real",
+    "created_at": "2018-12-07T14:00:24.459-05:00",
+    "updated_at": "2018-12-07T14:00:24.459-05:00"
+  }
+}
